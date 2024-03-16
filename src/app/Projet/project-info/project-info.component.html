@@ -1,0 +1,90 @@
+<div class="modal-content">
+  <div class="line1">
+    <h2>Modification d'un Projet</h2>
+    <button type="button" class="btn-close" aria-label="Close"></button>
+    <!-- (click)="closeModal()" -->
+  </div>
+  <form class="modal-body" [formGroup]="form">
+    <!--(submit)="modifierProjet()" -->
+    <div class="form-group">
+      <label for="nom">Nom du Projet</label>
+      <input
+        type="text"
+        class="form-control"
+        id="nom"
+        formControlName="nom"
+        name="nom"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="budget">Budget Alloué</label>
+      <input
+        type="number"
+        class="form-control"
+        id="budget"
+        formControlName="budget_alloue"
+        name="budget"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="budget">Budget Dépensé</label>
+      <input
+        type="number"
+        class="form-control"
+        id="budget"
+        formControlName="budget_depense"
+        name="budget"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="dateDebut">Date de Début</label>
+      <input
+        type="date"
+        class="form-control"
+        id="dateDebut"
+        formControlName="date_debut"
+        name="dateDebut"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="date_fin_prevue">Date de Fin Prévue:</label>
+      <input
+        type="date"
+        id="date_fin_prevue"
+        name="date_fin_prevue"
+        formControlName="date_fin_prevue"
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="objectif">Objectifs du Projet:</label>
+      <input
+        type="text"
+        id="objectif"
+        name="objectif"
+        formControlName="objectif"
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="risques">Risques du Projet:</label>
+      <input
+        type="text"
+        id="risques"
+        name="risques"
+        formControlName="risques"
+        class="form-control"
+        required
+      />
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="modifierProjet()">
+      Modifier
+    </button>
+  </form>
+</div>

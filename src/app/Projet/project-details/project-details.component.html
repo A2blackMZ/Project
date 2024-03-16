@@ -1,0 +1,276 @@
+<div *ngIf="loading" class="loading-container">
+  <img src="/assets/loading.gif" alt="Chargement en cours..." />
+</div>
+
+<app-topnavbar></app-topnavbar>
+<div class="row">
+  <div class="col-md-3">
+    <app-leftnavbar></app-leftnavbar>
+  </div>
+  <div class="col-md-9">
+    <h2>Informations du Projet</h2>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="card card-margin">
+            <div class="card-header no-border">
+              <h5 class="card-title">{{ project.nom }}</h5>
+            </div>
+            <div class="card-body pt-0">
+              <div class="widget-49">
+                <ol class="widget-49-meeting-points">
+                  <li class="widget-49-meeting-item">
+                    <strong>Objectifs du Projet :</strong
+                    ><span>{{ project.objectif }}</span>
+                  </li>
+                  <li class="widget-49-meeting-item">
+                    <strong>Risques du Projet:</strong
+                    ><span>{{ project.risques }}</span>
+                  </li>
+                  <!-- <li class="widget-49-meeting-item"><span>Session timeout increase to 30 minutes</span></li> -->
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="card card-margin">
+            <div class="card-header no-border">
+              <h5 class="card-title">Date</h5>
+            </div>
+            <div class="card-body pt-0">
+              <div class="widget-49">
+                <div class="widget-49-title-wrapper">
+                  <div class="widget-49-date-primary">
+                    <span class="widget-49-date-day"
+                      ><img src="assets/img/calendar.png"
+                    /></span>
+                    <!-- <span class="widget-49-date-month">apr</span> -->
+                  </div>
+                  <div class="widget-49-meeting-info">
+                    <span class="widget-49-pro-title"
+                      ><strong>Début :</strong> {{ project.date_debut }}</span
+                    >
+                    <span class="widget-49-pro-title"
+                      ><strong>Fin (Prévue) :</strong>
+                      {{ project.date_fin_prevue }}</span
+                    >
+                    <br /><br />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="card card-margin">
+            <div class="card-header no-border">
+              <h5 class="card-title">Budget</h5>
+            </div>
+            <div class="card-body pt-0">
+              <div class="widget-49">
+                <div class="widget-49-title-wrapper">
+                  <div class="widget-49-date-primary">
+                    <span class="widget-49-date-day"
+                      ><img src="assets/img/coin1.png"
+                    /></span>
+                    <!-- <span class="widget-49-date-month">apr</span> -->
+                  </div>
+                  <div class="widget-49-meeting-info">
+                    <span class="widget-49-pro-title"
+                      ><strong>Alloué:</strong>
+                      {{ project.budget_alloue }} FCFA</span
+                    >
+                    <span class="widget-49-pro-title"
+                      ><strong>Dépensé:</strong>
+                      {{ project.budget_depense }} FCFA</span
+                    >
+                    <br /><br />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h2
+                class="card-title"
+                style="display: inline; margin-right: 235px"
+              >
+                Tâches du Projet
+              </h2>
+              <button class="btn btn-success" (click)="openModalF()">
+                Ajouter
+              </button>
+              <br />
+              <div class="table-responsive" style="overflow-y: scroll">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Nom de la Tâche</th>
+                      <th>Description</th>
+                      <th>État</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let task of tasks">
+                      <td>{{ task.nom }}</td>
+                      <td>{{ task.description }}</td>
+                      <div [ngSwitch]="task.etat">
+                        <div *ngSwitchCase="'Enregistré'">
+                          <td>
+                            <label class="badge badge-info">{{
+                              task.etat
+                            }}</label>
+                          </td>
+                        </div>
+                        <div *ngSwitchCase="'En cours'">
+                          <td>
+                            <label class="badge badge-warning">{{
+                              task.etat
+                            }}</label>
+                          </td>
+                        </div>
+                        <div *ngSwitchCase="'Terminé'">
+                          <td>
+                            <label class="badge badge-success">{{
+                              task.etat
+                            }}</label>
+                          </td>
+                        </div>
+                        <div *ngSwitchCase="'Annulé'">
+                          <td>
+                            <label class="badge badge-danger">{{
+                              task.etat
+                            }}</label>
+                          </td>
+                        </div>
+                      </div>
+                      <td>
+                        <div class="dropdown">
+                          <a
+                            class="dropdown-toggle"
+                            href="#"
+                            id="userDropdown"
+                            role="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                          >
+                            <img
+                              src="assets/img/menu.png"
+                              style="width: 20px; height: 20px"
+                            />
+                          </a>
+                          <div
+                            class="dropdown-menu"
+                            aria-labelledby="userDropdown"
+                          >
+                            <a
+                              class="dropdown-item"
+                              (click)="openModalUpdateTache(task)"
+                              >Modifier</a
+                            >
+                            <a
+                              class="dropdown-item"
+                              (click)="deleteTache(task.id)"
+                              >Supprimer</a
+                            >
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h2
+                class="card-title"
+                style="display: inline; margin-right: 235px"
+              >
+                Comptes Rendus
+              </h2>
+              <button class="btn btn-success" (click)="openModalC()">
+                Ajouter
+              </button>
+              <br />
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Événement</th>
+                      <th>Difficultés</th>
+                      <th>Commentaires</th>
+                      <th>Date</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let compteRendu of comptesRendus">
+                      <td>{{ compteRendu.evenement }}</td>
+                      <td>{{ compteRendu.difficultes }}</td>
+                      <td>{{ compteRendu.commentaires }}</td>
+                      <td>{{ compteRendu.date }}</td>
+                      <td>
+                        <div class="dropdown">
+                          <a
+                            class="dropdown-toggle"
+                            href="#"
+                            id="userDropdown"
+                            role="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                          >
+                            <img
+                              src="assets/img/menu.png"
+                              style="width: 20px; height: 20px"
+                            />
+                          </a>
+                          <div
+                            class="dropdown-menu"
+                            aria-labelledby="userDropdown"
+                          >
+                            <a
+                              class="dropdown-item"
+                              (click)="openReportDetails(compteRendu)"
+                              >Détails</a
+                            >
+                            <a
+                              class="dropdown-item"
+                              (click)="openModalUpdateReport(compteRendu)"
+                              >Modifier</a
+                            >
+                            <a
+                              class="dropdown-item"
+                              (click)="deleteCompteRendu(compteRendu.id)"
+                              >Supprimer</a
+                            >
+                            <!-- (click)="modifierTache(task)" -->
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="modal-content">
+  <div class="line1">
+    <h2>Modification d'un Commentaire</h2>
+    <button type="button" class="btn-close" aria-label="Close"></button>
+    <!-- //A COMMENTER (click)="closeModal()" -->
+  </div>
+  <form class="modal-body" [formGroup]="form">
+    <!-- // A commenter (submit)="modifierProjet()" -->
+    <div class="form-group">
+      <label for="evenement">Evenement</label>
+      <input
+        type="text"
+        class="form-control"
+        id="evenement"
+        formControlName="evenement"
+        name="evenement"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="difficultes">Difficultés</label>
+      <textarea
+        class="form-control"
+        id="difficultes"
+        formControlName="difficultes"
+        name="difficultes"
+        required
+      ></textarea>
+    </div>
+    <div class="form-group">
+      <label for="budget">Commentaires</label>
+      <textarea
+        type="text"
+        class="form-control"
+        id="commentaires"
+        formControlName="commentaires"
+        name="commentaires"
+        required
+      ></textarea>
+    </div>
+    <div class="form-group">
+      <label for="dateDebut">Date du compte rendu:</label>
+      <input
+        type="date"
+        class="form-control"
+        id="date"
+        formControlName="date"
+        name="date"
+        required
+      />
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="modifierProjet()">
+      Modifier
+    </button>
+  </form>
+</div>

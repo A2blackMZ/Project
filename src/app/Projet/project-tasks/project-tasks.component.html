@@ -1,0 +1,76 @@
+<div class="modal-content">
+  <div class="line1">
+    <h2>Modification d'une Tâche</h2>
+    <button type="button" class="btn-close" aria-label="Close"></button>
+  </div>
+  <form [formGroup]="form">
+    <div class="form-group">
+      <label for="nom">Nom de la Tâche:</label>
+      <input
+        type="text"
+        id="nom"
+        name="nom"
+        formControlName="nom"
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea
+        id="description"
+        name="description"
+        formControlName="description"
+        class="form-control"
+        required
+      >
+      </textarea>
+    </div>
+    <div class="form-group">
+      <label for="date_echeance">Date d'échéance:</label>
+      <input
+        type="date"
+        id="date_echeance"
+        name="date_echeance"
+        formControlName="date_echeance"
+        class="form-control"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="etat">Etat:</label>
+      <select
+        class="form-select"
+        aria-label="Default select example"
+        name="etat"
+        id="etat"
+        formControlName="etat"
+      >
+        <option value="Enregistré">Enregistré</option>
+        <option value="En cours">En Cours</option>
+        <option value="Terminé">Terminé</option>
+        <option value="Annulé">Annulé</option>
+      </select>
+    </div>
+    <!-- <div class="form-group">
+      <label for="projet_id">N° Projet:</label>
+      <input
+        type="number"
+        id="projet_id"
+        name="projet_id"
+        formControlName="projet_id"
+        class="form-control"
+        required
+      />
+    </div> -->
+
+    <button
+      type="submit"
+      class="btn btn-primary mx-auto"
+      (ngSubmit)="modifiertache()"
+    >
+      Modifier Tâche
+    </button>
+  </form>
+</div>

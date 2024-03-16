@@ -1,0 +1,17 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h2>Détails du Compte Rendu</h2>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="closeModal()"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <p><strong>Événement:</strong> {{ data.report.evenement }}</p>
+    <p><strong>Difficultés:</strong> {{ data.report.difficultes }}</p>
+    <p><strong>Commentaires:</strong> {{ data.report.commentaires }}</p>
+    <p><strong>Date du compte rendu:</strong> {{ data.report.date }}</p>
+  </div>
+</div>

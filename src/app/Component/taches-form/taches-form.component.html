@@ -1,0 +1,65 @@
+<div class="modal-content">
+  <div class="line1">
+    <h2>Création d'une Tâche</h2>
+    <button
+      type="button"
+      class="btn-close"
+      (click)="closeModal()"
+      aria-label="Close"
+    ></button>
+  </div>
+  <form (ngSubmit)="createTaches()" class="modal-body">
+    <div class="form-group">
+      <label for="nom">Nom de la Tâche:</label>
+      <input
+        type="text"
+        id="nom"
+        name="nom"
+        [(ngModel)]="newTache.nom"
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea
+        id="description"
+        name="description"
+        [(ngModel)]="newTache.description"
+        class="form-control"
+        required
+      >
+      </textarea>
+    </div>
+    <div class="form-group">
+      <label for="date_echeance">Date d'échéance:</label>
+      <input
+        type="date"
+        id="date_echeance"
+        name="date_echeance"
+        [(ngModel)]="newTache.date_echeance"
+        class="form-control"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="etat">Etat:</label>
+      <select
+        class="form-select"
+        aria-label="Default select example"
+        name="etat"
+        id="etat"
+        [(ngModel)]="newTache.etat"
+      >
+        <option selected>Open this select menu</option>
+        <option value="Enregistré">Enregistré</option>
+        <option value="En cours">En Cours</option>
+        <option value="Terminé">Terminé</option>
+        <option value="Annulé">Annulé</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary mx-auto">Ajouter Tâche</button>
+  </form>
+</div>

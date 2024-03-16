@@ -1,0 +1,98 @@
+<div *ngIf="loading" class="loading-container">
+  <img src="/assets/loading.gif" alt="Chargement en cours..." />
+</div>
+<app-topnavbar></app-topnavbar>
+<div class="row">
+  <div class="col-md-3">
+    <app-leftnavbar></app-leftnavbar>
+  </div>
+  <div class="col-md-9">
+    <ul class="nav nav-tabs">
+      <li class="nav-item" *ngFor="let projet of projetsSelectionnes">
+        <a
+          class="nav-link"
+          [ngClass]="{
+            active: activeTab === projet.id,
+            'selected-tab': activeTab === projet.id
+          }"
+          (click)="selectTab(projet.id)"
+          >{{ "Projet " + projet.id }}</a
+        >
+      </li>
+    </ul>
+    <ng-container *ngFor="let projet of projetsSelectionnes">
+      <div [hidden]="activeTab !== projet.id" class="scrollable-form">
+        <!-- Formulaire pour le projet -->
+        <form [formGroup]="projetForm" (ngSubmit)="submitForm()">
+          <div>
+            <label for="evenement">Evenement</label>
+            <input
+              type="text"
+              class="form-control"
+              id="evenement"
+              name="evenement"
+              formControlName="evenement"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="difficultes">Difficultés</label>
+            <textarea
+              class="form-control"
+              id="difficultes"
+              name="difficultes"
+              formControlName="difficultes"
+              required
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label for="budget">Commentaires</label>
+            <textarea
+              type="text"
+              class="form-control"
+              id="commentaires"
+              name="commentaires"
+              formControlName="commentaires"
+              required
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label for="approche_solution">Approches de Solutions</label>
+            <textarea
+              class="form-control"
+              id="approche_solution"
+              name="approche_solution"
+              formControlName="approche_solution"
+              required
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label for="action_retenu">Actions Retenues</label>
+            <textarea
+              class="form-control"
+              id="action_retenu"
+              name="action_retenu"
+              formControlName="action_retenu"
+              required
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label for="dateDebut">Date du compte rendu:</label>
+            <input
+              type="date"
+              class="form-control"
+              id="date"
+              name="date"
+              formControlName="date"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">
+            <!--(click)="modifierProjet()"-->
+            Enregistrer
+          </button>
+        </form>
+      </div>
+    </ng-container>
+  </div>
+</div>
