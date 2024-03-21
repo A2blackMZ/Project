@@ -113,31 +113,4 @@ return [
 
     'supports_credentials' => false,
 
-
-    'paths' => ['api/*'],
-    'methods' => ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
-    'headers' => ['*'],
-
-    'Access-Control-Allow-Origin' => ['*'],
-    //'Access-Control-Allow-Credentials' => ['true'],
-    'Access-Control-Allow-Headers' => ['Content-Type', 'X-Requested-With', 'Authorization'],
-
-
-
-
-    'allowed_origins_patterns' => [],
-
-
-
-    'supports_credentials' => true,
-
-'paths' => ['api/*', 'web/*'], // Applique CORS aux routes API et web
-'methods' => ['*'], // Permet toutes les méthodes
- // Permet tous les en-têtes
-
-//'Access-Control-Allow-Origin' => ['*'],
-'Access-Control-Allow-Credentials' => true,
-
-
-
 ];

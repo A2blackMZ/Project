@@ -26,11 +26,17 @@ class Projet extends Model
 
     public function taches()
     {
-        return $this->hasMany(Tache::class);
+        return $this->hasMany(Taches::class);
     }
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function users()
+    {
+        // Assurez-vous d'adapter cette relation à votre structure de base de données
+        return $this->belongsToMany(User::class);
     }
 }

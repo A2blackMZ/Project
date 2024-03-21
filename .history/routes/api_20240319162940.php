@@ -42,14 +42,11 @@ Route::delete('/comptes-rendus/{id}', [CompteRenduController::class, 'destroy'])
 
 // routes pour CRUD Utilisateurs
 
-Route::get('/projects/{projectId}/users', [UtilisateurController::class, 'index']);
-Route::post('/users/{projectId}', [UtilisateurController::class, 'store']);
-Route::get('/users/{userId}', [UtilisateurController::class, 'show']);
-Route::put('/users/{userId}', [UtilisateurController::class, 'update']);
-Route::put('/users/{userId}/block', [UtilisateurController::class, 'block']);
-Route::put('/users/{userId}/unblock', [UtilisateurController::class, 'unblock']);
-Route::delete('/users/{userId}', [UtilisateurController::class, 'destroy']);
-
+Route::get('/utilisateurs', [UtilisateurController::class, 'index']);
+Route::post('/utilisateurs', [UtilisateurController::class, 'store']);
+Route::get('/utilisateurs/{id}', [UtilisateurController::class, 'show']);
+Route::put('/utilisateurs/{id}', [UtilisateurController::class, 'update']);
+Route::delete('/utilisateurs/{id}', [UtilisateurController::class, 'destroy']);
 
 //Génération de rapport
 Route::post('seances/{id}/generate-report', [SeanceController::class, 'generateReport']);

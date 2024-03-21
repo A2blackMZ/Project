@@ -22,6 +22,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+        'blocked',
     ];
 
     /**
@@ -43,4 +45,26 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
+
+
+    public function projets()
+    {
+        return $this->belongsToMany(Projet::class);
+    }
+
+
+    public function isAdmin()
+{
+    return $this->role === 'admin';
+}
+
+
+public function isBlocked()
+{
+    return $this->blocked === true;
+}
+
+
 }
