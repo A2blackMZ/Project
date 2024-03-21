@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
@@ -14,6 +15,13 @@ import { ProjectTasksComponent } from './Projet/project-tasks/project-tasks.comp
 import { AccueilComponent } from './Seance/Accueil/accueil.component';
 import { SeanceRegisterComponent } from './Seance/seance-register/seance-register.component';
 import { TabsComponentComponent } from './Component/tabs-component/tabs-component.component';
+
+
+import { UserListComponent } from './users/user-list/user-list.component';
+import { UserDetailComponent } from './users/user-detail/user-detail.component';
+import { UserCreateComponent } from './users/user-create/user-create.component';
+import { UserUpdateComponent } from './users/user-update/user-update.component';
+
 const routes: Routes = [
   { path: '', component : HomeComponent},
   { path: 'login', component: LoginComponent },
@@ -26,10 +34,17 @@ const routes: Routes = [
   { path: 'projets', component: ProjetsComponent },
   { path: 'form', component: ProjectFormComponent },
   { path: 'project-details/:id', component: ProjectDetailsComponent},
+  { path: 'list', component: UserListComponent },
+  { path: 'detail/:id', component: UserDetailComponent },
+  { path: 'create', component: UserCreateComponent },
+  { path: 'update/:id', component: UserUpdateComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), FormsModule
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
+

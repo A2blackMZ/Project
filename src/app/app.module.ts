@@ -46,6 +46,14 @@ import { AccueilComponent } from './Seance/Accueil/accueil.component';
 import { SeanceRegisterComponent } from './Seance/seance-register/seance-register.component';
 import { TabsComponentComponent } from './Component/tabs-component/tabs-component.component';
 //import { RapportComponent } from './rapport/rapport.component';
+
+
+import { UserListComponent } from './users/user-list/user-list.component';
+import { UserDetailComponent } from './users/user-detail/user-detail.component';
+import { UserCreateComponent } from './users/user-create/user-create.component';
+import { UserUpdateComponent } from './users/user-update/user-update.component';
+
+
 const appRoute: Routes = [{
   path: '',
   component : HomeComponent
@@ -73,7 +81,11 @@ const appRoute: Routes = [{
     ReportFormComponent,
     AccueilComponent,
     TabsComponentComponent,
-    //RapportComponent
+    //RapportComponent,
+    UserUpdateComponent,
+    UserCreateComponent,
+    UserDetailComponent,
+    UserListComponent
   ],
   imports: [
     MatPaginatorModule,

@@ -1,0 +1,26 @@
+<div class="user-list-container">
+  <h2>Liste des Utilisateurs du Projet {{ projectId }}</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+          <button (click)="blockUser(user.id)">Bloquer</button>
+          <button (click)="unblockUser(user.id)">Débloquer</button>
+          <button (click)="destroyUser(user.id)">Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="users.length === 0">Aucun utilisateur trouvé pour ce projet.</div>
+</div>
