@@ -54,6 +54,9 @@ Route::delete('/users/{userId}', [UtilisateurController::class, 'destroy']);
 //Génération de rapport
 Route::post('seances/{id}/generate-report', [SeanceController::class, 'generateReport']);
 
+
+Route::get('/comptes-rendus/{projetId}/pdf-data', [CompteRenduController::class, 'generatePDFData']);
+
 //GetBY
 Route::get('projets/{projectId}/taches', [ProjetController::class, 'getTachesByProjectId']);
 
