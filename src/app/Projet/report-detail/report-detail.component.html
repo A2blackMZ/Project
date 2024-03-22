@@ -1,17 +1,38 @@
-<div class="modal-content">
-  <div class="modal-header">
-    <h2>Détails du Compte Rendu</h2>
-    <button
-      type="button"
-      class="btn-close"
-      aria-label="Close"
-      (click)="closeModal()"
-    ></button>
-  </div>
-  <div class="modal-body">
-    <p><strong>Événement:</strong> {{ data.report.evenement }}</p>
-    <p><strong>Difficultés:</strong> {{ data.report.difficultes }}</p>
-    <p><strong>Commentaires:</strong> {{ data.report.commentaires }}</p>
-    <p><strong>Date du compte rendu:</strong> {{ data.report.date }}</p>
-  </div>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rapport de Séance de Supervision</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <!--<div *ngIf="loading" class="loading-container">
+    <img src="/assets/loading.gif" alt="Chargement en cours..." />
+  </div>-->
+
+    <app-topnavbar></app-topnavbar>
+    <div class="row">
+      <div class="col-md-3">
+        <app-leftnavbar></app-leftnavbar>
+      </div>
+      <div class="col-md-9">
+        <section class="ftco-section">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <div style="margin: 15px">
+                  <h1>Liste des Rapports de Séance de Supervision</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>

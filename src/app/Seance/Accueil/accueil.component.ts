@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { Router } from '@angular/router';
-import { formatDate } from '@angular/common';
+//import * as jsPDF from 'jspdf';
+import { jsPDF } from 'jspdf';
+import { error } from 'jquery';
 
 @Component({
   selector: 'app-accueil',
@@ -9,10 +11,18 @@ import { formatDate } from '@angular/common';
   styleUrls: ['./accueil.component.css']
 })
 export class AccueilComponent implements OnInit {
+
+  @Input() rapport: any;
+[x: string]: any;
 		seances: any[] = [];
+    projets: any[] = [];
     seanceId!: number;
+    projetId!: number;
     loading:boolean =false;
     rapports: any[] = [];
+    project: any = {};
+
+
 		constructor(private router: Router, private dataService: DataService) {}
 
   fetchSeance(){
@@ -33,20 +43,6 @@ export class AccueilComponent implements OnInit {
     this.router.navigate(['seance/gestion', seanceId]);
   }
 
-  /*fetchRapportData(seanceId: number): void {
-    this.loading = true;
-    this.dataService.generateRapportData(seanceId).subscribe(
-      (data) => {
-        this.rapports = data;
-        this.loading = false;
-      },
-      (error) => {
-        console.error('Erreur lors de la récupération des données du rapport : ', error);
-        this.loading = false;
-      }
-    );
-  }*/
-
   validateSeance(seanceId: number) {
 	this.dataService.validateSeance(seanceId).subscribe(
     (response) => {
@@ -61,19 +57,47 @@ export class AccueilComponent implements OnInit {
   );
 }
 
-generateReport(seanceId: number) {
-  this.dataService.generateReport(seanceId).subscribe(
+genererRapport(projetId: number) {
+  this.dataService.genererRapport(projetId).subscribe(
     (response) => {
-      // Traitez le PDF généré ici (par exemple, l'afficher ou le télécharger)
-      console.log('PDF généré avec succès', response);
-      // Vous pouvez afficher le PDF dans une nouvelle fenêtre ou le télécharger en fonction de vos besoins
-    },
-    (error) => {
-      console.error('Erreur lors de la génération du rapport', error);
-      // Traitez les erreurs ici, si nécessaire
+      console.log(projetId);
+      console.log('Données récupérées avec succès:', response);
+
+      // Créer un nouveau document PDF
+      const doc = new jsPDF();
+
+      //Positionnement vertical
+      let verticalPosition = 10;
+
+      //Ajout de données récupérées dans le PDF
+
+      `<h1>Rapport de Seance de supervision</h1>`
+
+      doc.text('Evènement:'+response.evenement, 10, verticalPosition);
+      verticalPosition += 10;
+
+      doc.text('Difficultés:'+response.difficultes, 10, verticalPosition);
+      verticalPosition += 10;
+
+      doc.text('Commentaires:'+response.commentaires, 10, verticalPosition);
+      verticalPosition += 10;
+
+      doc.text('Date de la séance de supervision:'+response.date, 10, verticalPosition);
+      verticalPosition += 10;
+
+      doc.text('Approches de solutions:'+response.approche_solution, 10, verticalPosition);
+      verticalPosition += 10;
+
+      doc.text('Actions retenues:'+response.action_retenu, 10, verticalPosition);
+      verticalPosition += 10;
+
+      doc.save('rapport.pdf');
+
+      console.log('Rapport généré avec succès');
+    }
+    ,(error) => {
+      console.error('Une erreur s\'est produite lors de la génération du rapport:', error);
     }
   );
-}
-
-
+  }
 }

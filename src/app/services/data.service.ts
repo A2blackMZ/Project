@@ -141,4 +141,8 @@ logout(): Observable<any> {
     // Envoyer une requête HTTP POST pour générer le rapport avec l'ID de la séance
     return this.http.post<any>(`${this.apiUrl}/seances/${seanceId}/generate-report`, {});
   }
+
+  genererRapport(projetId: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/comptes-rendus/${projetId}/pdf-data`);
+  }
 }

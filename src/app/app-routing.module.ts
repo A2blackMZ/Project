@@ -16,6 +16,7 @@ import { AccueilComponent } from './Seance/Accueil/accueil.component';
 import { SeanceRegisterComponent } from './Seance/seance-register/seance-register.component';
 import { TabsComponentComponent } from './Component/tabs-component/tabs-component.component';
 
+import { ReportDetailComponent } from './Projet/report-detail/report-detail.component';
 
 import { UserListComponent } from './users/user-list/user-list.component';
 import { UserDetailComponent } from './users/user-detail/user-detail.component';
@@ -38,11 +39,11 @@ const routes: Routes = [
   { path: 'detail/:id', component: UserDetailComponent },
   { path: 'create', component: UserCreateComponent },
   { path: 'update/:id', component: UserUpdateComponent },
+  { path: 'rapport', component: ReportDetailComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), FormsModule
-  ],
+  imports: [RouterModule.forRoot(routes), FormsModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
