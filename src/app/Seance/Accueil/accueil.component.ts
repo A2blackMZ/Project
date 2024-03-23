@@ -3,7 +3,6 @@ import { DataService } from 'src/app/services/data.service';
 import { Router } from '@angular/router';
 //import * as jsPDF from 'jspdf';
 import { jsPDF } from 'jspdf';
-import { error } from 'jquery';
 
 @Component({
   selector: 'app-accueil',
@@ -13,7 +12,7 @@ import { error } from 'jquery';
 export class AccueilComponent implements OnInit {
 
   @Input() rapport: any;
-[x: string]: any;
+    [x: string]: any;
 		seances: any[] = [];
     projets: any[] = [];
     seanceId!: number;
@@ -66,38 +65,47 @@ genererRapport(projetId: number) {
       // Créer un nouveau document PDF
       const doc = new jsPDF();
 
-      //Positionnement vertical
-      let verticalPosition = 10;
+      // Générer le contenu HTML du rapport
+      const htmlContent = `
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Rapport de Séance de Supervision</title>
+          <style>
+            .data{
+              font-size:4px
+            }
+          </style>
+        </head>
+        <body>
+          <h5>Rapport de Séance de Supervision</h4>
+          <p class="data">Événement: ${response.evenement}</p>
+          <p class="data">Difficultés: ${response.difficultes}</p>
+          <p class="data">Commentaires: ${response.commentaires}</p>
+          <p class="data">Date du compte rendu: ${response.date}</p>
+          <p class="data">Approches de solution: ${response.approche_solution}</p>
+          <p class="data">Actions retenues: ${response.action_retenu}</p>
+        </body>
+        </html>
+      `;
 
-      //Ajout de données récupérées dans le PDF
-
-      `<h1>Rapport de Seance de supervision</h1>`
-
-      doc.text('Evènement:'+response.evenement, 10, verticalPosition);
-      verticalPosition += 10;
-
-      doc.text('Difficultés:'+response.difficultes, 10, verticalPosition);
-      verticalPosition += 10;
-
-      doc.text('Commentaires:'+response.commentaires, 10, verticalPosition);
-      verticalPosition += 10;
-
-      doc.text('Date de la séance de supervision:'+response.date, 10, verticalPosition);
-      verticalPosition += 10;
-
-      doc.text('Approches de solutions:'+response.approche_solution, 10, verticalPosition);
-      verticalPosition += 10;
-
-      doc.text('Actions retenues:'+response.action_retenu, 10, verticalPosition);
-      verticalPosition += 10;
-
-      doc.save('rapport.pdf');
-
-      console.log('Rapport généré avec succès');
-    }
-    ,(error) => {
-      console.error('Une erreur s\'est produite lors de la génération du rapport:', error);
+      // Ajouter le contenu HTML au PDF
+      doc.html(htmlContent, {
+        callback: () => {
+          // Sauvegarder le document PDF localement
+          doc.save('rapport.pdf');
+          console.log('Rapport généré avec succès!');
+        }
+      });
+    },
+    (error) => {
+      console.error('Une erreur s\'est produite lors de la génération du rapport :', error);
     }
   );
-  }
+}
+
+
+
 }
