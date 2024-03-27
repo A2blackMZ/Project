@@ -29,6 +29,6 @@ class FichierAttache extends Model
 
     public function tache()
     {
-        return $this->belongsTo(Tache::class);
+        return $this->belongsTo(Taches::class);
     }
 }

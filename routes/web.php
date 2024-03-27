@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SeanceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,3 +18,20 @@ Route::get('/', function () {
    return 'Je m\'appelle Shadrac';
     // return view('welcome');
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Route::get('generate_pdf/{seanceId}', [SeanceController::class, 'generatePDF']);
+
+Route::post('seances/{id}/generate-report', [SeanceController::class, 'generateReport']);

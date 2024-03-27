@@ -19,6 +19,23 @@ class ProjetController extends Controller
     public function store(Request $request)
     {
         $projet = Projet::create($request->all());
+
+        // Création du nom du dossier
+        $dossierNom = $projet->nom . '_' . $projet->id;
+
+        // Chemin du dossier
+        $cheminDossier = storage_path('app/projets/' . $dossierNom);
+
+        // Création du dossier
+        if (!file_exists($cheminDossier)) {
+            mkdir($cheminDossier, 0777, true);
+        }
+
+        // Vous pouvez enregistrer le chemin du dossier dans la base de données si nécessaire
+        $projet->update(['FolderPath' => $cheminDossier]);
+
+
+
         return new ProjetResource($projet);
     }
 

@@ -17,6 +17,7 @@ class Projet extends Model
         'jour_compte_rendu',
         'risques',
         'user_id',
+        'FolderPath',
     ];
 
     public function membres()

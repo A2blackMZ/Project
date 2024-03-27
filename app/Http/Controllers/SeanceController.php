@@ -11,6 +11,9 @@ use Illuminate\Support\Carbon;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
+//use Barryvdh\DomPDF\Facade as PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 class SeanceController extends Controller
 {
     public function index()
@@ -144,4 +147,31 @@ class SeanceController extends Controller
         // Renvoyer le PDF au frontend
         return $pdf->stream('rapport_seance.pdf');
     }
+
+
+
+public function generatePdf($seanceId) {
+    $seance = Seance::findOrFail($seanceId);
+
+    // Fetch all projects for the given session
+    $projectIds = $seance->projets()->pluck('projet_id');
+
+    // Retrieve project information
+    $projets = Projet::whereIn('id', $projectIds)->get();
+
+    // Retrieve the reports for each project
+    $compteRendus = CompteRendu::whereIn('projet_id', $projectIds)->get();
+
+    // Load the view and pass the data to generate the PDF
+    $pdf = PDF::loadView('report.seanceReport', [
+        'seance' => $seance,
+        'compteRendus' => $compteRendus,
+        'projets' => $projets
+    ]);
+
+    // Return the generated PDF
+    return $pdf->download('seance-report.pdf');
+}
+
+
 }
