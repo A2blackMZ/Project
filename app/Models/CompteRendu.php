@@ -18,6 +18,7 @@ class CompteRendu extends Model
         'approche_solution',
         'action_retenu',
         'projet_id',
+        'used',
     ];
 
     public function projet()

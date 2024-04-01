@@ -7,6 +7,7 @@ use App\Http\Controllers\API\CompteRenduController;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\SeanceController;
+use App\Http\Controllers\FichierAttacheController;
 use App\Http\Controllers\RapportController;
 use App\Http\Controllers\UtilisateurController;
 use Illuminate\Http\Request;
@@ -70,6 +71,20 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:api');
 Route::get('/projets', [ProjetController::class, 'index']);
 Route::get('/projets/user/{userId}', [ProjetController::class, 'getProjectsByUserId']);
+
+
+//Importation des fichiers
+
+Route::post('/projets/{projetId}/fichiers',[FichierAttacheController::class, 'importerFichier']);
+
+Route::get('/projets/{projetId}/fichiers',[FichierAttacheController::class, 'recupererFichiers']);
+
+Route::delete('/files/{fileId}', [FichierAttacheController::class, 'destroy']);
+
+//generate report
+Route::get('generate_pdf/{seanceId}', [SeanceController::class, 'generatePDF']);
+
+Route::get('ReportsSeance/{seanceId}', [SeanceController::class, 'getSeanceReports']);
 
 Route::middleware('auth:api')->group(function () {
     Route::get('/user_', [AuthController::class, 'user']);

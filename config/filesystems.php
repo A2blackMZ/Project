@@ -28,6 +28,7 @@ return [
     |
     */
 
+
     'disks' => [
 
         'local' => [
@@ -55,6 +56,13 @@ return [
             'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
             'throw' => false,
         ],
+
+        'fichiers_projet' => [
+        'driver' => 'local',
+        'root' => storage_path('app/public/fichiers_projet'),
+        'url' => env('APP_URL').'/storage/fichiers_projet',
+        'visibility' => 'public',
+    ],
 
     ],
 

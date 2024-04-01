@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Seance;
 use App\Models\Projet;
+use App\Models\GeneratedReport;
 use App\Models\CompteRendu;
 use App\Http\Resources\SeanceResource;
 use Illuminate\Support\Carbon;
 use Dompdf\Dompdf;
 use Dompdf\Options;
+use Illuminate\Support\Facades\Storage;
 
 //use Barryvdh\DomPDF\Facade as PDF;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -149,6 +151,51 @@ class SeanceController extends Controller
     }
 
 
+/*
+public function generatePdf($seanceId) {
+    $seance = Seance::findOrFail($seanceId);
+
+    // Fetch all projects for the given session
+    $projectIds = $seance->projets()->pluck('projet_id');
+
+    // Retrieve project information
+    $projets = Projet::whereIn('id', $projectIds)->get();
+
+    // Retrieve the reports for each project where 'used' field is false
+    $compteRendus = CompteRendu::whereIn('projet_id', $projectIds)
+                                ->where('used', false)
+                                ->get();
+
+    // Set the 'used' field to true for the retrieved reports
+    foreach ($compteRendus as $compteRendu) {
+        $compteRendu->used = true;
+        $compteRendu->save();
+    }
+
+    // Load the view and pass the data to generate the PDF
+    $pdf = PDF::loadView('report.seanceReport', [
+        'seance' => $seance,
+        'compteRendus' => $compteRendus,
+        'projets' => $projets
+    ]);
+
+    // Génère le nom de fichier unique
+    $filename = 'seance-report-' . time() . '.pdf';
+
+    // Sauvegarde le fichier PDF généré sur le serveur
+    $filePath = storage_path('app/reports' . $filename);
+    $pdf->save($filePath);
+
+    // Crée une entrée dans la table generated_reports avec le chemin du fichier
+    GeneratedReport::create([
+        'seance_id' => $seance->id,
+        'file_path' => $filePath
+    ]);
+
+    // Retourne le chemin absolu du fichier PDF généré
+    return $pdf->download($filename);
+}*/
+
 
 public function generatePdf($seanceId) {
     $seance = Seance::findOrFail($seanceId);
@@ -159,8 +206,16 @@ public function generatePdf($seanceId) {
     // Retrieve project information
     $projets = Projet::whereIn('id', $projectIds)->get();
 
-    // Retrieve the reports for each project
-    $compteRendus = CompteRendu::whereIn('projet_id', $projectIds)->get();
+    // Retrieve the reports for each project where 'used' field is false
+    $compteRendus = CompteRendu::whereIn('projet_id', $projectIds)
+                                ->where('used', false)
+                                ->get();
+
+    // Set the 'used' field to true for the retrieved reports
+    foreach ($compteRendus as $compteRendu) {
+        $compteRendu->used = true;
+        $compteRendu->save();
+    }
 
     // Load the view and pass the data to generate the PDF
     $pdf = PDF::loadView('report.seanceReport', [
@@ -169,9 +224,34 @@ public function generatePdf($seanceId) {
         'projets' => $projets
     ]);
 
-    // Return the generated PDF
-    return $pdf->download('seance-report.pdf');
+    // Génère le nom de fichier unique
+    $filename = 'seance-report-' . time() . '.pdf';
+
+    // Utilisez Storage pour sauvegarder le fichier PDF généré sur le serveur
+    $filePath = 'reports/' . $filename; // Chemin dans le système de fichiers
+    Storage::disk('public')->put($filePath, $pdf->output());
+
+    // Obtenez l'URL publique du fichier
+    $fileUrl = Storage::url($filePath);
+    // Crée une entrée dans la table generated_reports avec l'URL du fichier
+    GeneratedReport::create([
+        'seance_id' => $seance->id,
+        'file_path' => $fileUrl // Enregistrez l'URL ici
+    ]);
+
+    // Retourne le fichier PDF généré pour téléchargement
+    return $pdf->download($filename);
 }
+
+public function getSeanceReports($seanceId) {
+    // Récupère les rapports générés pour la séance donnée
+    $rapports = GeneratedReport::where('seance_id', $seanceId)->get();
+
+    // Retourne les rapports
+    return response()->json(['rapports' => $rapports]);
+}
+
+
 
 
 }

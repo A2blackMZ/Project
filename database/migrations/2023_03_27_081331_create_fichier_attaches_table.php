@@ -14,15 +14,10 @@ return new class extends Migration
         Schema::create('fichier_attaches', function (Blueprint $table) {
             $table->id();
             $table->string('chemin');
-            $table->text('description')->nullable();
-            $table->unsignedBigInteger('utilisateur_id');
             $table->unsignedBigInteger('projet_id')->nullable();
-            $table->unsignedBigInteger('tache_id')->nullable();
             $table->timestamps();
 
-            $table->foreign('utilisateur_id')->references('id')->on('utilisateurs');
             $table->foreign('projet_id')->references('id')->on('projets');
-            $table->foreign('tache_id')->references('id')->on('taches');
         });
     }
 

@@ -5,17 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class FichierAttache extends Model
+class GeneratedReport extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['chemin', 'projet_id'];
+    protected $fillable = ['seance_id', 'file_path'];
 
     /**
      * Relation avec le modèle Projet
      */
-    public function projet()
+    public function seance()
     {
-        return $this->belongsTo(Projet::class);
+        return $this->belongsTo(Seance::class);
     }
 }

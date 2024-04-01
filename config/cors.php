@@ -111,11 +111,11 @@ return [
     |
     */
 
-    'supports_credentials' => false,
+    //'supports_credentials' => false,
 
 
-    'paths' => ['api/*'],
-    'methods' => ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
+    //'paths' => ['api/*'],
+    //'methods' => ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
     'headers' => ['*'],
 
     'Access-Control-Allow-Origin' => ['*'],
@@ -131,13 +131,11 @@ return [
 
     'supports_credentials' => true,
 
-'paths' => ['api/*', 'web/*'], // Applique CORS aux routes API et web
-'methods' => ['*'], // Permet toutes les méthodes
- // Permet tous les en-têtes
+    'paths' => ['api/*', 'web/*'], // Applique CORS aux routes API et web
+    'methods' => ['*'], // Permet toutes les méthodes
+    // Permet tous les en-têtes
 
-//'Access-Control-Allow-Origin' => ['*'],
-'Access-Control-Allow-Credentials' => true,
-
-
+    //'Access-Control-Allow-Origin' => ['*'],
+    'Access-Control-Allow-Credentials' => true,
 
 ];

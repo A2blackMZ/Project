@@ -30,4 +30,11 @@ class Seance extends Model
         return $this->belongsToMany(CompteRendu::class, 'compte_rendus_seance', 'seance_id', 'compte_rendu_id');
     }
 
+
+
+    public function GeneratedReports()
+    {
+        return $this->belongsToMany(GeneratedReport::class);
+    }
+
 }
