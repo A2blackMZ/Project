@@ -22,6 +22,7 @@ import { UserListComponent } from './users/user-list/user-list.component';
 import { UserDetailComponent } from './users/user-detail/user-detail.component';
 import { UserCreateComponent } from './users/user-create/user-create.component';
 import { UserUpdateComponent } from './users/user-update/user-update.component';
+import { FichierAttahesComponent } from './fichier-attahes/fichier-attahes.component';
 
 const routes: Routes = [
   { path: '', component : HomeComponent},
@@ -39,7 +40,8 @@ const routes: Routes = [
   { path: 'detail/:id', component: UserDetailComponent },
   { path: 'create', component: UserCreateComponent },
   { path: 'update/:id', component: UserUpdateComponent },
-  { path: 'rapport', component: ReportDetailComponent },
+  { path: 'rapport/:id', component: ReportDetailComponent },
+  { path: 'fichier_attaches', component: FichierAttahesComponent },
 ];
 
 @NgModule({

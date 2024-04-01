@@ -23,6 +23,14 @@ interface UserData {
   projetId?: string;
 }
 
+interface Fichier {
+  id: number;
+  chemin: string;
+  created_at: string;
+  projetId?: string;
+}
+
+
 
 
 @Component({
@@ -31,11 +39,7 @@ interface UserData {
   styleUrls: ['./project-details.component.css'],
 })
 export class ProjectDetailsComponent {
-
-
   userId!: number;
-
-
   projectId!: number;
   project: any; // Remplacez 'any' par le type de votre projet si possible
   tasks: any;
@@ -45,6 +49,13 @@ export class ProjectDetailsComponent {
   loading: boolean = false;
   tacheId!: number;
   compteRenduId!: number;
+  fichierId!: number;
+
+
+  selectedFile: File | null = null;
+
+  fichiersImportes: any[] = [];
+  
 
   constructor(
     private route: ActivatedRoute,
@@ -83,12 +94,6 @@ export class ProjectDetailsComponent {
       }
     });
   }
-
-
-  // openModalC() {
-  //   this.modalService.openModalC();
-  // }
-
   openModalUpdateTache(tache: any) {
     const dialogRef = this.dialog.open(ProjectTasksComponent, {
       data: { tache , projetId: this.projectId} // Passez les données de la tâche au composant modal
@@ -162,12 +167,12 @@ export class ProjectDetailsComponent {
     this.route.params.subscribe((params) => {
       this.projectId = +params['id']; // Convertissez l'ID en nombre
     this.fetchProjects();
-
     });
-
-
-
     this.userId = this.route.snapshot.params['userId'];
+
+    this.fichierId = this.route.snapshot.params['fichierId'];
+
+    this.recupererFichiers();
   }
 
 
@@ -187,10 +192,6 @@ export class ProjectDetailsComponent {
       }
     );
   }
-
-
-
-
   openModalU() {
   const dialogRef = this.dialog.open(UserCreateComponent, {
     data: { projectId: this.projectId },
@@ -263,45 +264,93 @@ destroyUser(userId: number): void {
   }
 }
 
-
-
-/*
-    createUser() {
-    // Utilisez une approche plus sûre pour récupérer 'projectId'
-    const projectIdParam = this.route.snapshot.paramMap.get('projectId');
-    if (projectIdParam) {
-      const projectId = +projectIdParam;
-      if (!Number.isNaN(projectId)) {
-        this.usersService.storeUser(projectId, this.userData).subscribe(
-          (data) => {
-            console.log('Utilisateur créé avec succès :', data);
-            this.router.navigate(['/users']);
-          },
-          (error) => {
-            console.error('Une erreur est survenue lors de la création de l\'utilisateur :', error);
-            // Implémentez une logique pour afficher un message d'erreur à l'utilisateur
-          }
-        );
-      } else {
-        console.error('Project ID is not a number');
-        // Gérer l'erreur de projectId ici
-      }
-    } else {
-      console.error('Project ID is not available');
-      // Gérer l'absence de projectId ici
-    }
+destroyFile(fichierId: number): void {
+  if (fichierId == null || fichierId === undefined) {
+    console.error('L\'ID du fichier est undefined.');
+    return;
   }
 
-
-    updateUser() {
-    this.usersService.updateUser(this.userId, this.userData).subscribe(
-      (response) => {
-        console.log('Utilisateur mis à jour avec succès', response);
-        this.router.navigate(['/users']);
+  if (confirm('Êtes-vous sûr de vouloir supprimer ce fichier ?')) {
+    this.dataService.destroyFile(fichierId).pipe(first()).subscribe(
+      () => {
+        console.log("fichier supprimé");
+        this.ngOnInit(); // On force une actualisation de la page pour afficher le changement
       },
       (error) => {
-        console.error('Erreur lors de la mise à jour de l\'utilisateur', error);
+        console.error('Erreur lors de la suppression du fichier:', error);
+        alert('Une erreur est survenue lors de la suppression du fichier.');
       }
     );
-  }*/
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Add these properties to your ProjectDetailsComponent
+
+
+// Add these methods to your ProjectDetailsComponent
+
+onFileSelected(event: Event): void {
+  const element = event.currentTarget as HTMLInputElement;
+  let fileList: FileList | null = element.files;
+  if (fileList) {
+    this.selectedFile = fileList[0];
+  }
+}
+
+uploadFile(): void {
+  if (this.selectedFile) {
+    this.dataService.importerFichier(this.selectedFile, this.projectId).subscribe(
+      (response) => {
+        console.log('File uploaded successfully', response);
+        this.recupererFichiers();
+      },
+      (error) => {
+        console.error('Error uploading file', error);
+      }
+    );
+  }
+}
+
+
+
+recupererFichiers(): void {
+  this.dataService.recupererFichiers(this.projectId).subscribe(
+    (fichiers) => {
+      this.fichiersImportes = fichiers.map((fichier: Fichier) => ({
+        lien: fichier.chemin,
+        dateImportation: new Date(fichier.created_at).toLocaleDateString(),
+        id: fichier.id,
+      }));
+      console.log('Files retrieved successfully', this.fichiersImportes);
+    },
+    (error) => {
+      console.error('Error retrieving files', error);
+    }
+  );
+}
+
+
+
 }

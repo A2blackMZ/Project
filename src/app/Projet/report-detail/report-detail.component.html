@@ -26,7 +26,54 @@
             <div class="row">
               <div class="col-md-12">
                 <div style="margin: 15px">
-                  <h1>Liste des Rapports de Séance de Supervision</h1>
+                  <h1>Liste des Rapports de la Séance de Supervision</h1>
+
+                  <div class="table-responsive" style="overflow-y: scroll">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Rapport</th>
+                          <th>Date de création du rapport</th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let report of seanceReports">
+                          <td>
+                            <a
+                              href="http://localhost:8000{{ report.file_path }}"
+                              target="_blank"
+                              >Voir le fichier</a
+                            >
+                          </td>
+
+                          <td>{{ report.created_at }}</td>
+                          <td>
+                            <div class="dropdown">
+                              <a
+                                class="dropdown-toggle"
+                                href="#"
+                                id="userDropdown"
+                                role="button"
+                                data-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                              >
+                                <img
+                                  src="assets/img/menu.png"
+                                  style="width: 20px; height: 20px"
+                                />
+                              </a>
+                              <div
+                                class="dropdown-menu"
+                                aria-labelledby="userDropdown"
+                              ></div>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>

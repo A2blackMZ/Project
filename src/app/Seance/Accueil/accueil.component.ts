@@ -42,6 +42,7 @@ export class AccueilComponent implements OnInit {
     this.router.navigate(['seance/gestion', seanceId]);
   }
 
+
   validateSeance(seanceId: number) {
 	this.dataService.validateSeance(seanceId).subscribe(
     (response) => {
@@ -56,56 +57,23 @@ export class AccueilComponent implements OnInit {
   );
 }
 
-genererRapport(projetId: number) {
-  this.dataService.genererRapport(projetId).subscribe(
-    (response) => {
-      console.log(projetId);
-      console.log('Données récupérées avec succès:', response);
 
-      // Créer un nouveau document PDF
-      const doc = new jsPDF();
+  generatePdf(seanceId: number) {
+    this.dataService.generatePdf(seanceId).subscribe(
+      (pdfBlob: Blob) => {
+        // Crée un objet blob URL pour le PDF généré
+        const pdfUrl = URL.createObjectURL(pdfBlob);
 
-      // Générer le contenu HTML du rapport
-      const htmlContent = `
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Rapport de Séance de Supervision</title>
-          <style>
-            .data{
-              font-size:4px
-            }
-          </style>
-        </head>
-        <body>
-          <h5>Rapport de Séance de Supervision</h4>
-          <p class="data">Événement: ${response.evenement}</p>
-          <p class="data">Difficultés: ${response.difficultes}</p>
-          <p class="data">Commentaires: ${response.commentaires}</p>
-          <p class="data">Date du compte rendu: ${response.date}</p>
-          <p class="data">Approches de solution: ${response.approche_solution}</p>
-          <p class="data">Actions retenues: ${response.action_retenu}</p>
-        </body>
-        </html>
-      `;
-
-      // Ajouter le contenu HTML au PDF
-      doc.html(htmlContent, {
-        callback: () => {
-          // Sauvegarder le document PDF localement
-          doc.save('rapport.pdf');
-          console.log('Rapport généré avec succès!');
-        }
-      });
-    },
-    (error) => {
-      console.error('Une erreur s\'est produite lors de la génération du rapport :', error);
-    }
-  );
-}
+        // Ouvrir le PDF dans un nouvel onglet
+        window.open(pdfUrl);
+      },
+      (error) => {
+        console.error('Une erreur s\'est produite lors de la génération du PDF :', error);
+      }
+    );
+  }
 
 
+  
 
 }

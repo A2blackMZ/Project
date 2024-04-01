@@ -145,4 +145,32 @@ logout(): Observable<any> {
   genererRapport(projetId: number): Observable<any> {
     return this.http.get(`${this.apiUrl}/comptes-rendus/${projetId}/pdf-data`);
   }
+
+  generatePdf(seanceId: number) {
+    return this.http.get(`${this.apiUrl}/generate_pdf/${seanceId}`, { responseType: 'blob' });
+  }
+
+
+  // Supprimer un fichier importer
+  destroyFile(fichierId: number): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/files/${fichierId}`);
+  }
+
+  // Add these methods to your existing DataService
+importerFichier(file: File, projetId: number): Observable<any> {
+  const formData = new FormData();
+  formData.append('file', file);
+  return this.http.post(`${this.apiUrl}/projets/${projetId}/fichiers`, formData);
 }
+
+recupererFichiers(projetId: number): Observable<any> {
+  return this.http.get(`${this.apiUrl}/projets/${projetId}/fichiers`);
+}
+
+getSeanceReports(seanceId: number): Observable<any> {
+  return this.http.get(`${this.apiUrl}/ReportsSeance/${seanceId}`);
+}
+
+}
+
+

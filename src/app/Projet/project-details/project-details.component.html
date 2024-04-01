@@ -276,7 +276,6 @@
     <div><p></p></div>
 
     <!-- Gestion des utilisateurs -->
-    <!-- Gestion des utilisateurs -->
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -352,6 +351,85 @@
                             >
                               Débloquer
                             </a>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <!-- Gestion des Fichiers. Importations Affichage-->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <h2
+                class="card-title"
+                style="display: inline; margin-right: 235px"
+              >
+                Gestion des fichiers
+              </h2>
+              <input type="file" (change)="onFileSelected($event)" />
+              <button class="btn btn-success" (click)="uploadFile()">
+                Importer un fichier
+              </button>
+
+              <br />
+
+              <div class="table-responsive" style="overflow-y: scroll">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>lien du fichier</th>
+                      <th>Date d'importation du fichier</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let fichier of fichiersImportes">
+                      <td>
+                        <a
+                          href="http://localhost:8000{{ fichier.lien }}"
+                          target="_blank"
+                          >Voir le fichier</a
+                        >
+                      </td>
+
+                      <td>{{ fichier.dateImportation }}</td>
+                      <td>
+                        <div class="dropdown">
+                          <a
+                            class="dropdown-toggle"
+                            href="#"
+                            id="userDropdown"
+                            role="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                          >
+                            <img
+                              src="assets/img/menu.png"
+                              style="width: 20px; height: 20px"
+                            />
+                          </a>
+                          <div
+                            class="dropdown-menu"
+                            aria-labelledby="userDropdown"
+                          >
+                            <a
+                              class="dropdown-item"
+                              (click)="destroyFile(fichier.id)"
+                              >Supprimer</a
+                            >
                           </div>
                         </div>
                       </td>
