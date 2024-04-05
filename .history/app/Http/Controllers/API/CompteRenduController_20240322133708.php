@@ -38,8 +38,6 @@ class CompteRenduController extends Controller
     {
         $report = CompteRendu::findOrFail($id);
         $report->update($request->all());
-        $report->used = false;
-        $report->save();
         return new CompteRenduResource($report);
     }
 

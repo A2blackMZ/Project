@@ -37,8 +37,6 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            width: 395mm; /* Largeur A3 */
-            height: 297mm; /* Hauteur A3 */
         }
 
         .card {
@@ -47,9 +45,8 @@
             background-color: #ffffff;
             border: 2px solid #87CEFA;
             border-radius: 10px;
-            margin-bottom: 900px;
-            margin-top: 900px;
-            margin-left: 35%;
+            margin-bottom: 350px;
+            margin-top: 350px;
         }
 
 
@@ -108,15 +105,15 @@
             @foreach($compteRendus as $index => $compteRendu)
                 <tr>
                     @if ($index === 0)
-                        <td rowspan="{{ count($compteRendus) }}">{{ $seance->reference }}</td>
+                        <td rowspan="{{ count($compteRendus) }}">{{!! $seance->reference }}</td>
                     @endif
                     <td>{{ $projets[$index]->nom }}</td>
                     <td>{{ $seance->nom_chef_projet }}</td>
-                    <td>{!! $compteRendu->evenement !!}</td>
-                    <td>{!! $compteRendu->difficultes !!}</td>
-                    <td>{!! $compteRendu->commentaires !!}</td>
-                    <td>{!! $compteRendu->approche_solution !!}</td>
-                    <td>{!! $compteRendu->action_retenu !!}</td>
+                    <td>{{!! $compteRendu->evenement }}</td>
+                    <td>{{!! $compteRendu->difficultes !!}}</td>
+                    <td>{{!! $compteRendu->commentaires !!}}</td>
+                    <td>{{!! $compteRendu->approche_solution !!}}</td>
+                    <td>{{!! $compteRendu->action_retenu !!}}</td>
                     <td>{{ $compteRendu->date }}</td>
                 </tr>
             @endforeach

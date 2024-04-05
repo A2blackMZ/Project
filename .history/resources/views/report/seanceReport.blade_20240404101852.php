@@ -38,7 +38,6 @@
             align-items: center;
             height: 100vh;
             width: 395mm; /* Largeur A3 */
-            height: 297mm; /* Hauteur A3 */
         }
 
         .card {
@@ -47,9 +46,9 @@
             background-color: #ffffff;
             border: 2px solid #87CEFA;
             border-radius: 10px;
-            margin-bottom: 900px;
-            margin-top: 900px;
-            margin-left: 35%;
+            margin-bottom: 500px;
+            margin-top: 500px;
+            margin-left: 40%;
         }
 
 

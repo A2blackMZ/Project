@@ -47,8 +47,8 @@
             background-color: #ffffff;
             border: 2px solid #87CEFA;
             border-radius: 10px;
-            margin-bottom: 900px;
-            margin-top: 900px;
+            margin-bottom: 700px;
+            margin-top: 700px;
             margin-left: 35%;
         }
 
