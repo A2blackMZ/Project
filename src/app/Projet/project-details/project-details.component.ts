@@ -55,7 +55,7 @@ export class ProjectDetailsComponent {
   selectedFile: File | null = null;
 
   fichiersImportes: any[] = [];
-  
+
 
   constructor(
     private route: ActivatedRoute,
@@ -65,6 +65,15 @@ export class ProjectDetailsComponent {
     private usersService: UsersService,
     private router: Router
   ) { }
+
+  editorConfig = {
+    base_url: '/tinymce',
+    suffix: '.min',
+    plugins: 'lists link image code a11ychecker advlist advcode advtable autolink checklist export lists link image charmap preview anchor searchreplace visualblocks powerpaste fullscreen formatpainter insertdatetime media table help wordcount',
+    menubar: true,
+    toolbar: true,
+    min_height: 10
+  }
 
  generateUniqueReference(): string {
     const prefix = 'PAC-'; // Préfixe de la référence
@@ -94,6 +103,7 @@ export class ProjectDetailsComponent {
       }
     });
   }
+
   openModalUpdateTache(tache: any) {
     const dialogRef = this.dialog.open(ProjectTasksComponent, {
       data: { tache , projetId: this.projectId} // Passez les données de la tâche au composant modal

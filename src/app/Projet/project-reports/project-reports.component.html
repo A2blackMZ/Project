@@ -10,37 +10,38 @@
   </div>
   <form (ngSubmit)="createReport()" class="modal-body">
     <div class="form-group">
-      <label for="evenement">Evenement:</label>
-      <input
-        type="text"
-        id="evenement"
+      <label for="evenement">Evenement</label>
+      <editor
+        apiKey="no-api-key"
+        [init]="editorConfig"
         name="evenement"
+        id="evenement"
         [(ngModel)]="compteRendu.evenement"
-        class="form-control"
         required
-      />
+      ></editor>
     </div>
     <div class="form-group">
       <label for="difficultes">Difficultés</label>
-      <textarea
+      <editor
+        apiKey="no-api-key"
+        [init]="editorConfig"
         id="difficultes"
         name="difficultes"
         [(ngModel)]="compteRendu.difficultes"
-        class="form-control"
         required
-      >
-      </textarea>
+      ></editor>
     </div>
     <div class="form-group">
-      <label for="commentaires">Commentaires</label>
-      <textarea
+      <label for="budget">Commentaires</label>
+      <editor
+        apiKey="no-api-key"
+        [init]="editorConfig"
+        type="text"
         id="commentaires"
         name="commentaires"
         [(ngModel)]="compteRendu.commentaires"
-        class="form-control"
         required
-      >
-      </textarea>
+      ></editor>
     </div>
     <div class="form-group">
       <label for="date">Date du compte rendu:</label>

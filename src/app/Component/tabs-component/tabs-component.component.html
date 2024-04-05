@@ -24,57 +24,65 @@
       <div [hidden]="activeTab !== projet.id" class="scrollable-form">
         <!-- Formulaire pour le projet -->
         <form [formGroup]="projetForm" (ngSubmit)="submitForm()">
+          <!-- Replace the textarea with TinyMCE -- class="form-control"-->
           <div>
             <label for="evenement">Evenement</label>
-            <input
-              type="text"
-              class="form-control"
-              id="evenement"
+            <editor
+              apiKey="no-api-key"
+              [init]="editorConfig"
               name="evenement"
+              id="evenement"
               formControlName="evenement"
               required
-            />
+            ></editor>
           </div>
+
           <div class="form-group">
             <label for="difficultes">Difficultés</label>
-            <textarea
-              class="form-control"
+            <editor
+              apiKey="no-api-key"
+              [init]="editorConfig"
               id="difficultes"
               name="difficultes"
               formControlName="difficultes"
               required
-            ></textarea>
+            ></editor>
           </div>
+
           <div class="form-group">
             <label for="budget">Commentaires</label>
-            <textarea
+            <editor
+              apiKey="no-api-key"
+              [init]="editorConfig"
               type="text"
-              class="form-control"
               id="commentaires"
               name="commentaires"
               formControlName="commentaires"
               required
-            ></textarea>
+            ></editor>
           </div>
+
           <div class="form-group">
             <label for="approche_solution">Approches de Solutions</label>
-            <textarea
-              class="form-control"
+            <editor
+              apiKey="no-api-key"
+              [init]="editorConfig"
               id="approche_solution"
               name="approche_solution"
               formControlName="approche_solution"
               required
-            ></textarea>
+            ></editor>
           </div>
           <div class="form-group">
             <label for="action_retenu">Actions Retenues</label>
-            <textarea
-              class="form-control"
+            <editor
+              apiKey="no-api-key"
+              [init]="editorConfig"
               id="action_retenu"
               name="action_retenu"
               formControlName="action_retenu"
               required
-            ></textarea>
+            ></editor>
           </div>
           <div class="form-group">
             <label for="dateDebut">Date du compte rendu:</label>

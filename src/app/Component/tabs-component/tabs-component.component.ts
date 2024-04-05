@@ -3,12 +3,15 @@ import { ActivatedRoute } from '@angular/router'; // Si vous utilisez le routeur
 import { DataService } from 'src/app/services/data.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { forkJoin } from 'rxjs';
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 @Component({
   selector: 'app-tabs-component',
   templateUrl: './tabs-component.component.html',
   styleUrls: ['./tabs-component.component.css']
 })
+
+
 export class TabsComponentComponent {
   projetsSelectionnes: any[] = [];
   activeTab: number = 0;
@@ -23,6 +26,15 @@ export class TabsComponentComponent {
     private dataService: DataService,
     private route: ActivatedRoute // Si vous utilisez le routeur Angular
   ) {}
+
+    editorConfig = {
+    base_url: '/tinymce',
+    suffix: '.min',
+    plugins: 'lists link image code a11ychecker advlist advcode advtable autolink checklist export lists link image charmap preview anchor searchreplace visualblocks powerpaste fullscreen formatpainter insertdatetime media table help wordcount',
+    menubar: true,
+    toolbar: true,
+    min_height: 10
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {

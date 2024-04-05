@@ -16,6 +16,8 @@ import { AccueilComponent } from './Seance/Accueil/accueil.component';
 import { SeanceRegisterComponent } from './Seance/seance-register/seance-register.component';
 import { TabsComponentComponent } from './Component/tabs-component/tabs-component.component';
 
+import { TestTibyCMEComponent } from './test-tiby-cme/test-tiby-cme.component';
+
 import { ReportDetailComponent } from './Projet/report-detail/report-detail.component';
 
 import { UserListComponent } from './users/user-list/user-list.component';
@@ -42,6 +44,7 @@ const routes: Routes = [
   { path: 'update/:id', component: UserUpdateComponent },
   { path: 'rapport/:id', component: ReportDetailComponent },
   { path: 'fichier_attaches', component: FichierAttahesComponent },
+  { path: 'testTinyCME', component: TestTibyCMEComponent },
 ];
 
 @NgModule({

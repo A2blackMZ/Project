@@ -220,9 +220,9 @@
                   </thead>
                   <tbody>
                     <tr *ngFor="let compteRendu of comptesRendus">
-                      <td>{{ compteRendu.evenement }}</td>
-                      <td>{{ compteRendu.difficultes }}</td>
-                      <td>{{ compteRendu.commentaires }}</td>
+                      <td [innerHTML]="compteRendu.evenement"></td>
+                      <td [innerHTML]="compteRendu.difficultes"></td>
+                      <td [innerHTML]="compteRendu.commentaires"></td>
                       <td>{{ compteRendu.date }}</td>
                       <td>
                         <div class="dropdown">

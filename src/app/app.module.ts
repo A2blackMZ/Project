@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { NgChartsModule } from 'ng2-charts' ;
+import { EditorModule, TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
 
 
 
@@ -103,6 +104,7 @@ const appRoute: Routes = [{
     IconsProviderModule,
     NzLayoutModule,
     NzMenuModule,
+    EditorModule,
     // NzIconModule.forRoot(),
   ],
   providers: [
@@ -111,7 +113,10 @@ const appRoute: Routes = [{
         useClass: DataInterceptor,
         multi: true
     },
-    { provide: NZ_I18N, useValue: fr_FR }
+    { provide: NZ_I18N, useValue: fr_FR },
+    {
+      provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce.min.js'
+    }
 ],
   bootstrap: [AppComponent]
 })
