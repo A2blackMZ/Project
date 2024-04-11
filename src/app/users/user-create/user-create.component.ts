@@ -8,7 +8,6 @@ interface UserData {
   email: string;
   password: string;
   role: string;
-  projectId?: number;
 }
 
 @Component({
@@ -25,6 +24,10 @@ export class UserCreateComponent implements OnInit {
   };
   users: UserData[] = [];
 
+  selectedRoles: string[] = [];
+  roles: string[] = ['Admin', 'User', 'Créateur', 'Modificateur'];
+
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { projectId: number },
     private route: ActivatedRoute,
@@ -32,14 +35,11 @@ export class UserCreateComponent implements OnInit {
     private usersService: UsersService,
     private dialogRef: MatDialogRef<UserCreateComponent>
   ) {
-    if (this.data.projectId) {
-      this.userData.projectId = this.data.projectId;
-    }
   }
 
   ngOnInit(): void {
     if (this.data.projectId) {
-      this.usersService.getUsers(this.data.projectId).subscribe(
+      this.usersService.getUsers().subscribe(
         (data: UserData[]) => {
           this.users = data;
         },
@@ -55,8 +55,7 @@ export class UserCreateComponent implements OnInit {
   }
 
   createUser(): void {
-    if (this.userData.projectId) {
-      this.usersService.storeUser(this.userData.projectId, this.userData).subscribe(
+      this.usersService.storeUser(this.userData).subscribe(
         (data: UserData) => {
           this.users.push(data);
           this.userData = { name: '', email: '', password: '', role: '' }; // Reset form
@@ -67,8 +66,5 @@ export class UserCreateComponent implements OnInit {
           console.error('Error creating user:', error);
         }
       );
-    } else {
-      console.error('Project ID is not available');
-    }
   }
 }

@@ -30,3 +30,34 @@
 .loading-indicator img {
   width: 50px; /* Ajustez la taille de l'image selon vos besoins */
 }
+
+
+
+/* Style pour le message de statut "valide" */
+.Valid {
+  background-color: #4caf50; /* Couleur de fond verte */
+  color: #ffffff; /* Couleur du texte blanc */
+  padding: 5px 10px; /* Espacement intérieur */
+  border-radius: 5px; /* Coins arrondis */
+}
+
+/* Style pour le message de statut "non_valide" */
+.nonValid {
+  background-color: #f44336; /* Couleur de fond rouge */
+  /* Autres styles si nécessaire */
+}
+
+
+
+/* Style pour le message "Ce statut est valide" */
+.status-message.valid {
+  color: green; /* Couleur du texte */
+  font-weight: bold; /* Poids de la police */
+}
+
+/* Style pour le message "Ce statut n'est pas valide" */
+.status-message.non-valid {
+  color: red; /* Couleur du texte */
+  font-weight: bold; /* Poids de la police */
+}
+

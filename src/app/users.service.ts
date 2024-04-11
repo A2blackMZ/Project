@@ -11,14 +11,25 @@ export class UsersService {
 
   constructor(private http: HttpClient) { }
 
-  // Récupérer tous les utilisateurs d'un projet
-  getUsers(projectId: number): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/projects/${projectId}/users`);
+
+  //Add members
+  storeMember(projectId: number, userId: number, userData: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/userProject/${projectId}/user/${userId}`, userData);
+  }
+
+  //get members
+  getMembers(projectId: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/users/${projectId}`);
+  }
+
+  // Récupérer tous les utilisateurs
+  getUsers(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/users`);
   }
 
   // Créer un nouvel utilisateur
-  storeUser(projectId: number, userData: any): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/users/${projectId}`, userData);
+  storeUser(userData: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/users`, userData);
   }
 
   // Afficher un utilisateur spécifique

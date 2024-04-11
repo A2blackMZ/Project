@@ -8,17 +8,21 @@ import { UserUpdateComponent } from './user-update/user-update.component';;
 import { AppRoutingModule } from '../app-routing.module';
 import { UsersService } from '../users.service';
 import { FormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
 
 
 
 @NgModule({
   declarations: [
-    
+
   ],
   imports: [
     CommonModule,
     AppRoutingModule,
     FormsModule,
+    MatSelectModule,
+    MatOptionModule,
   ],
   providers: [UsersService],
 })

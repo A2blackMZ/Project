@@ -12,6 +12,7 @@ import { UsersService } from 'src/app/users.service';
 import { UserCreateComponent } from 'src/app/users/user-create/user-create.component';
 import { UserUpdateComponent } from 'src/app/users/user-update/user-update.component';
 import { first, forkJoin } from 'rxjs';
+import { MemberCreateComponent } from 'src/app/member-create-component/member-create-component.component';
 
 
 interface UserData {
@@ -75,7 +76,7 @@ export class ProjectDetailsComponent {
     min_height: 10
   }
 
- generateUniqueReference(): string {
+  generateUniqueReference(): string {
     const prefix = 'PAC-'; // Préfixe de la référence
     const randomNumber = Math.floor(10000 + Math.random() * 90000); // Génère un nombre aléatoire de 5 chiffres
 
@@ -155,7 +156,7 @@ export class ProjectDetailsComponent {
     project: this.dataService.getProjectById(this.projectId),
     tasks: this.dataService.getTasksByProjectId(this.projectId),
     comptesRendus: this.dataService.getComptesRendusByProjetId(this.projectId),
-    users: this.usersService.getUsers(this.projectId)
+    users: this.usersService.getMembers(this.projectId),
   }).subscribe({
     next: ({ project, tasks, comptesRendus, users }) => {
       this.project = project;
@@ -203,12 +204,12 @@ export class ProjectDetailsComponent {
     );
   }
   openModalU() {
-  const dialogRef = this.dialog.open(UserCreateComponent, {
-    data: { projectId: this.projectId },
+  const dialogRef = this.dialog.open(MemberCreateComponent, {
+    data: { projetId: this.projectId },
     width: '600px',
   });
   dialogRef.afterClosed().subscribe((result) => {
-    if (result && result.userCreated) {
+    if (result && result.MemberAdd) {
       this.fetchProjects();
     }
   });
@@ -293,26 +294,6 @@ destroyFile(fichierId: number): void {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -9,6 +9,8 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { NgChartsModule } from 'ng2-charts' ;
 import { EditorModule, TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
 
 
 
@@ -105,6 +107,8 @@ const appRoute: Routes = [{
     NzLayoutModule,
     NzMenuModule,
     EditorModule,
+    MatSelectModule,
+    MatOptionModule
     // NzIconModule.forRoot(),
   ],
   providers: [

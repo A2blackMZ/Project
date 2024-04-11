@@ -32,7 +32,7 @@ export class TabsComponentComponent {
     suffix: '.min',
     plugins: 'lists link image code a11ychecker advlist advcode advtable autolink checklist export lists link image charmap preview anchor searchreplace visualblocks powerpaste fullscreen formatpainter insertdatetime media table help wordcount',
     menubar: true,
-    toolbar: true,
+    toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
     min_height: 10
   }
 

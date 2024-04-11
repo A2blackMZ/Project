@@ -40,7 +40,7 @@
                       <th>Référence</th>
                       <th>Date de Supervision</th>
                       <th>Date de Création</th>
-                      <th>Nom du Chef de Projet</th>
+                      <th>Nom du Superviseur</th>
                       <th>Statut</th>
                       <th>Action</th>
                     </tr>
@@ -53,15 +53,29 @@
                       <td>{{ seance.nom_chef_projet }}</td>
                       <td>
                         <span
-                          class="badge"
-                          [ngClass]="{
-                            'badge-success': seance.statut === 'valide',
-                            'badge-danger': seance.statut === 'non_valide'
-                          }"
-                        >
-                          {{ seance.statut }}
-                        </span>
-                      </td>
+          [ngClass]="{
+            'badge badge-success': seance.statut === 'valide',
+            'badge badge-danger': seance.statut === 'non_valide'
+          }"
+          (mouseover)="seance['showMessage'] = true"
+          (mouseout)="seance['showMessage'] = false"
+        >
+          {{ seance.statut }}
+            </span>
+              <!-- Affichage du message lorsque la souris passe sur le champ "valide" -->
+              <div *ngIf="seance['showMessage']">
+                <!-- Affichage du message "Ce statut est valide" -->
+                <ng-container class="Valid" *ngIf="seance.statut === 'valide'; else nonValideMessage">
+                  Ce statut est valide.
+                </ng-container>
+
+                <!-- Affichage du message "Ce statut n'est pas valide" -->
+                <ng-template class="nonValid" #nonValideMessage>
+                  Ce statut n'est pas valide.
+                </ng-template>
+
+              </div>
+            </td>
                       <td>
                         <div class="dropdown">
                           <a

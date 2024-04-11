@@ -14,18 +14,19 @@
         <div class="col-lg-4">
           <div class="card card-margin">
             <div class="card-header no-border">
-              <h5 class="card-title">{{ project.nom }}</h5>
-            </div>
+              <h5 class="card-title" *ngIf="project">{{ project.nom }}</h5>
+          </div>
+
             <div class="card-body pt-0">
               <div class="widget-49">
                 <ol class="widget-49-meeting-points">
                   <li class="widget-49-meeting-item">
                     <strong>Objectifs du Projet :</strong
-                    ><span>{{ project.objectif }}</span>
+                    ><span *ngIf="project">{{ project.objectif }}</span>
                   </li>
                   <li class="widget-49-meeting-item">
                     <strong>Risques du Projet:</strong
-                    ><span>{{ project.risques }}</span>
+                    ><span *ngIf="project">{{ project.risques }}</span>
                   </li>
                   <!-- <li class="widget-49-meeting-item"><span>Session timeout increase to 30 minutes</span></li> -->
                 </ol>
@@ -48,10 +49,10 @@
                     <!-- <span class="widget-49-date-month">apr</span> -->
                   </div>
                   <div class="widget-49-meeting-info">
-                    <span class="widget-49-pro-title"
+                    <span class="widget-49-pro-title" *ngIf="project"
                       ><strong>Début :</strong> {{ project.date_debut }}</span
                     >
-                    <span class="widget-49-pro-title"
+                    <span class="widget-49-pro-title" *ngIf="project"
                       ><strong>Fin (Prévue) :</strong>
                       {{ project.date_fin_prevue }}</span
                     >
@@ -77,11 +78,11 @@
                     <!-- <span class="widget-49-date-month">apr</span> -->
                   </div>
                   <div class="widget-49-meeting-info">
-                    <span class="widget-49-pro-title"
+                    <span class="widget-49-pro-title" *ngIf="project"
                       ><strong>Alloué:</strong>
                       {{ project.budget_alloue }} FCFA</span
                     >
-                    <span class="widget-49-pro-title"
+                    <span class="widget-49-pro-title" *ngIf="project"
                       ><strong>Dépensé:</strong>
                       {{ project.budget_depense }} FCFA</span
                     >
@@ -285,7 +286,7 @@
                 class="card-title"
                 style="display: inline; margin-right: 235px"
               >
-                Gestion des utilisateurs
+                Gestion des membres
               </h2>
               <button class="btn btn-success" (click)="openModalU()">
                 Ajouter
@@ -331,11 +332,13 @@
                               (click)="openModalUpdateUser(user.id)"
                               >Modifier</a
                             >
+                          <!--
                             <a
                               class="dropdown-item"
                               (click)="destroyUser(user.id)"
                               >Supprimer</a
                             >
+                          -->
 
                             <a
                               *ngIf="!user.blocked"

@@ -6,38 +6,43 @@
   </div>
   <form class="modal-body" [formGroup]="form">
     <!-- // A commenter (submit)="modifierProjet()" -->
+
     <div class="form-group">
       <label for="evenement">Evenement</label>
-      <input
-        type="text"
-        class="form-control"
-        id="evenement"
-        formControlName="evenement"
+      <editor
+        apiKey="bw5yg8ceclbm45uva1xn703uy2dbdhb3quhtbk15ix7hcyrl"
+        [init]="editorConfig"
         name="evenement"
+        formControlName="evenement"
+        id="evenement"
         required
-      />
+      ></editor>
     </div>
+
     <div class="form-group">
       <label for="difficultes">Difficultés</label>
-      <textarea
-        class="form-control"
+      <editor
+        apiKey="bw5yg8ceclbm45uva1xn703uy2dbdhb3quhtbk15ix7hcyrl"
+        [init]="editorConfig"
         id="difficultes"
         formControlName="difficultes"
         name="difficultes"
         required
-      ></textarea>
+      ></editor>
     </div>
+
     <div class="form-group">
       <label for="budget">Commentaires</label>
-      <textarea
-        type="text"
-        class="form-control"
+      <editor
+        apiKey="bw5yg8ceclbm45uva1xn703uy2dbdhb3quhtbk15ix7hcyrl"
+        [init]="editorConfig"
         id="commentaires"
         formControlName="commentaires"
         name="commentaires"
         required
-      ></textarea>
+      ></editor>
     </div>
+
     <div class="form-group">
       <label for="dateDebut">Date du compte rendu:</label>
       <input

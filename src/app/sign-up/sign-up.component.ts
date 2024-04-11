@@ -31,4 +31,14 @@ export class SignUpComponent {
       }
     );
   }
+
+  // Function to toggle password visibility
+  togglePasswordVisibility(fieldName: string): void {
+    const inputField = document.getElementsByName(fieldName)[0] as HTMLInputElement;
+    if (inputField.type === 'password') {
+      inputField.type = 'text';
+    } else {
+      inputField.type = 'password';
+    }
+  }
 }
