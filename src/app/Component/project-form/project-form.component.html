@@ -1,0 +1,100 @@
+<div class="modal-content">
+  <div class="line1">
+    <h2>Création de Projet</h2>
+    <button
+      type="button"
+      class="btn-close"
+      (click)="closeModal()"
+      aria-label="Close"
+    ></button>
+  </div>
+  <form (ngSubmit)="createProject()" class="modal-body">
+    <div class="form-group">
+      <label for="nom">Nom du Projet:</label>
+      <input
+        type="text"
+        id="nom"
+        name="nom"
+        [(ngModel)]="newProject.nom"
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="budget_alloue">Budget Alloué:</label>
+      <input
+        type="text"
+        id="budget_alloue"
+        name="budget_alloue"
+        [(ngModel)]="newProject.budget_alloue"
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="budget_depense">Budget Dépensé:</label>
+      <input
+        type="text"
+        id="budget_depense"
+        name="budget_depense"
+        [(ngModel)]="newProject.budget_depense"
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="date_debut">Date de Début:</label>
+      <input
+        type="date"
+        id="date_debut"
+        name="date_debut"
+        [(ngModel)]="newProject.date_debut"
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="date_fin_prevue">Date de Fin Prévue:</label>
+      <input
+        type="date"
+        id="date_fin_prevue"
+        name="date_fin_prevue"
+        [(ngModel)]="newProject.date_fin_prevue"
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="objectif">Objectifs du Projet:</label>
+      <input
+        type="text"
+        id="objectif"
+        name="objectif"
+        [(ngModel)]="newProject.objectif"
+        class="form-control"
+        required
+      />
+    </div>
+    <!-- <div class="form-group">
+      <label for="jour_compte_rendu">Jours Compte rendu:</label>
+      <input type="date" id="jour_compte_rendu" name="jour_compte_rendu" [(ngModel)]="newProject.jour_compte_rendu" class="form-control" required>
+    </div> -->
+    <div class="form-group">
+      <label for="risques">Risques du Projet:</label>
+      <input
+        type="text"
+        id="risques"
+        name="risques"
+        [(ngModel)]="newProject.risques"
+        class="form-control"
+        required
+      />
+    </div>
+    <!-- <div class="form-group">
+      <label for="utilisateur_id">Utilisateur du Projet:</label>
+      <input type="number" id="utilisateur_id" name="utilisateur_id" [(ngModel)]="newProject.utilisateur_id" class="form-control" required>
+    </div> -->
+
+    <button type="submit" class="btn btn-primary mx-auto">Créer Projet</button>
+  </form>
+</div>

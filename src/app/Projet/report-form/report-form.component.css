@@ -1,0 +1,15 @@
+.modal-content {
+    height: 500px; /* Ajustez la hauteur maximale selon vos besoins */
+    overflow-y: auto; /* Ajoute une barre de défilement en cas de dépassement de la hauteur maximale */
+    width: 500px;
+  }
+
+  .line1 h2{
+    display:inline;
+    margin-right:120px;
+    margin-left:15px;
+  }
+
+  .btn{
+    padding: 5px;
+  }

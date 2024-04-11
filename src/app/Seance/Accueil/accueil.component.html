@@ -1,0 +1,117 @@
+<head>
+  <link
+    href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,700"
+    rel="stylesheet"
+    type="text/css"
+  />
+</head>
+<body>
+  <div *ngIf="loading" class="loading-container">
+    <img src="/assets/loading.gif" alt="Chargement en cours..." />
+  </div>
+
+  <app-topnavbar></app-topnavbar>
+  <div class="row">
+    <div class="col-md-3">
+      <app-leftnavbar></app-leftnavbar>
+    </div>
+    <div class="col-md-9">
+      <section class="ftco-section">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div style="margin: 15px">
+                <h2 style="display: inline; margin-right: 515px">
+                  Liste des Séances de Supervision
+                </h2>
+                <a
+                  class="btn btn-success"
+                  style="padding: 5px; color: white"
+                  routerLink="/seance/new"
+                  >Nouvelle Séance</a
+                >
+              </div>
+              <div class="table-wrap">
+                <!-- seances-list.component.html -->
+
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Référence</th>
+                      <th>Date de Supervision</th>
+                      <th>Date de Création</th>
+                      <th>Auteur</th>
+                      <th>Statut</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let seance of seances">
+                      <td>{{ seance.reference }}</td>
+                      <td>{{ seance.date_supervision }}</td>
+                      <td>{{ seance.date_creation }}</td>
+                      <td>{{ seance.nom_chef_projet }}</td>
+                      <td>
+                        <span
+                          class="badge"
+                          [ngClass]="{
+                            'badge-success': seance.statut === 'valide',
+                            'badge-danger': seance.statut === 'non_valide'
+                          }"
+                        >
+                          {{ seance.statut }}
+                        </span>
+                      </td>
+                      <td>
+                        <div class="dropdown">
+                          <a
+                            class="dropdown-toggle"
+                            href="#"
+                            id="userDropdown"
+                            role="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                          >
+                            <img src="assets/img/menu.png" />
+                          </a>
+                          <div
+                            class="dropdown-menu"
+                            aria-labelledby="userDropdown"
+                          >
+                            <a
+                              class="dropdown-item"
+                              (click)="validateSeance(seance.id)"
+                              >Valider</a
+                            >
+                            <a
+                              class="dropdown-item"
+                              (click)="onGererClick(seance.id)"
+                              >Gérer</a
+                            >
+                            <a
+                              class="dropdown-item"
+                              (click)="generatePdf(seance.id)"
+                              >Générer un rapport</a
+                            >
+                            <a
+                              class="dropdown-item"
+                              href="/rapport/{{ seance.id }}"
+                              >Voir les précédents rapports</a
+                            >
+
+                            <!--<button (click)="genererRapport(projetId)">Générer Rapport</button>-->
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>

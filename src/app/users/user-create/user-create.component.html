@@ -1,0 +1,66 @@
+<div class="modal-content">
+  <div class="line1">
+    <h2>Enregistrement d'un utilisateur</h2>
+    <button
+      type="button"
+      class="btn-close"
+      (click)="closeModal()"
+      aria-label="Close"
+    ></button>
+  </div>
+  <form (ngSubmit)="createUser()" class="modal-body">
+    <div class="form-group">
+      <label for="name">Nom & Prénoms:</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        [(ngModel)]="userData.name"
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input
+        id="email"
+        name="email"
+        type="email"
+        [(ngModel)]="userData.email"
+        class="form-control"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="password">Mot de passe:</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        [(ngModel)]="userData.password"
+        class="form-control"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="role">Rôle:</label>
+      <select
+        class="form-select"
+        aria-label="Default select example"
+        name="role"
+        id="role"
+        [(ngModel)]="userData.role"
+      >
+        <option selected>Open this select menu</option>
+        <option value="admin">Admin</option>
+        <option value="user">User</option>
+        <option value="créateur">Créateur</option>
+        <option value="modificateur">Modificateur</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary mx-auto">Add User</button>
+  </form>
+</div>
