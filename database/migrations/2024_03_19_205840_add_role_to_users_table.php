@@ -11,7 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('role')->default('admin');
+            $table->string('role')->default('manager');
             $table->boolean('blocked')->default(false);
         });
     }

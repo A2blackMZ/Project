@@ -13,27 +13,33 @@ class UtilisateurController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index($projectId)
+    public function index()
+    {
+        $users = User::all();
+        return response()->json($users);
+    }
+
+    public function users($projectId)
     {
         $project = Projet::findOrFail($projectId);
         $users = $project->users;
         return response()->json($users);
     }
 
+
     /**
      * Store a newly created resource in storage.
      */
-        public function store(Request $request,$projectId)
+        public function store(Request $request)
     {
-        /*if (!auth()->user()->isAdmin()) {
-        return response()->json(['message' => 'Accès non autorisé.'], 403);
-    }*/
+        /*if (!auth()->user()->isManager()) {
+            return response()->json(['message' => 'Accès non autorisé.'], 403);
+        }*/
         // Valider les données du formulaire
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8',
-            'role' => 'required|string',
         ]);
 
         // Créer un nouvel utilisateur
@@ -43,11 +49,21 @@ class UtilisateurController extends Controller
             'password' => bcrypt($request->password),
             'role' => $request->role,
         ]);
+        return response()->json(['user' => $user], 201);
+    }
+
+    public function storeUser(Request $request ,$projectId, $user)
+    {
+        $request->validate([
+            'role' => 'required|string',
+        ]);
 
         $project = Projet::findOrFail($projectId);
+        $user = User::findOrFail($user);
+        $user->update([$request->role]);
         $project->users()->attach($user);
 
-                return response()->json(['user' => $user], 201);
+        return response()->json(['user' => $user], 201);
     }
 
     /**
@@ -64,7 +80,7 @@ class UtilisateurController extends Controller
      */
     public function update(Request $request, $userId)
     {
-        /*if (!auth()->user()->isAdmin()) {
+        /*if (!auth()->user()->isManager()) {
         return response()->json(['message' => 'Accès non autorisé.'], 403);
     }*/
         $user = User::findOrFail($userId);
@@ -77,7 +93,7 @@ class UtilisateurController extends Controller
      */
     public function destroy($userId)
     {
-        /*if (!auth()->user()->isAdmin()) {
+        /*if (!auth()->user()->isManager()) {
         return response()->json(['message' => 'Accès non autorisé.'], 403);
     }*/
         $user = User::findOrFail($userId);
@@ -90,7 +106,7 @@ class UtilisateurController extends Controller
      */
     public function block($userId)
     {
-        /*if (!auth()->user()->isAdmin()) {
+        /*if (!auth()->user()->isManager()) {
         return response()->json(['message' => 'Accès non autorisé.'], 403);
     }*/
         $user = User::findOrFail($userId);
@@ -101,7 +117,7 @@ class UtilisateurController extends Controller
 
     public function unblock($userId)
     {
-        /*if (!auth()->user()->isAdmin()) {
+        /*if (!auth()->user()->isManager()) {
         return response()->json(['message' => 'Accès non autorisé.'], 403);
     }*/
         $user = User::findOrFail($userId);

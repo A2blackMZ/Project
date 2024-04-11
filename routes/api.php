@@ -43,8 +43,10 @@ Route::delete('/comptes-rendus/{id}', [CompteRenduController::class, 'destroy'])
 
 // routes pour CRUD Utilisateurs
 
-Route::get('/projects/{projectId}/users', [UtilisateurController::class, 'index']);
-Route::post('/users/{projectId}', [UtilisateurController::class, 'store']);
+Route::post('/userProject/{projectId}/user/{userId}', [UtilisateurController::class, 'storeUser']);
+Route::get('/users', [UtilisateurController::class, 'index']);
+Route::get('/users/{projectId}', [UtilisateurController::class, 'users']);
+Route::post('/users', [UtilisateurController::class, 'store']);
 Route::get('/users/{userId}', [UtilisateurController::class, 'show']);
 Route::put('/users/{userId}', [UtilisateurController::class, 'update']);
 Route::put('/users/{userId}/block', [UtilisateurController::class, 'block']);

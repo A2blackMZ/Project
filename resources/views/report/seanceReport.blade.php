@@ -91,37 +91,39 @@
 
     <br><br>
     <table>
-        <thead>
-            <tr>
-                <th>Réf.</th>
-                <th>Intitulé</th>
-                <th>Resp.</th>
-                <th>Événements importants depuis la dernière réunion de supervision</th>
-                <th>Difficultés</th>
-                <th>Commentaires</th>
-                <th>Approches de Solutions</th>
-                <th>Actions Retenues</th>
-                <th>Date d'Échéance</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($compteRendus as $index => $compteRendu)
-                <tr>
-                    @if ($index === 0)
-                        <td rowspan="{{ count($compteRendus) }}">{{ $seance->reference }}</td>
-                    @endif
-                    <td>{{ $projets[$index]->nom }}</td>
-                    <td>{{ $seance->nom_chef_projet }}</td>
-                    <td>{!! $compteRendu->evenement !!}</td>
-                    <td>{!! $compteRendu->difficultes !!}</td>
-                    <td>{!! $compteRendu->commentaires !!}</td>
-                    <td>{!! $compteRendu->approche_solution !!}</td>
-                    <td>{!! $compteRendu->action_retenu !!}</td>
-                    <td>{{ $compteRendu->date }}</td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
+    <thead>
+        <tr>
+            <th>Réf.</th>
+            <th>Intitulé</th>
+            <th>Resp.</th>
+            <th>Événements importants depuis la dernière réunion de supervision</th>
+            <th>Difficultés</th>
+            <th>Commentaires</th>
+            <th>Approches de Solutions</th>
+            <th>Actions Retenues</th>
+            <th>Date d'Échéance</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach($compteRendus as $index => $compteRendu)
+        <tr>
+            @if ($index === 0)
+            <td rowspan="{{ count($compteRendus) }}">{{ $seance->reference }}</td>
+            @endif
+
+            <td>{{ $compteRendu->projet->nom }}</td>
+            <td>{{ $seance->nom_chef_projet }}</td>
+            <td>{!! $compteRendu->evenement !!}</td>
+            <td>{!! $compteRendu->difficultes !!}</td>
+            <td>{!! $compteRendu->commentaires !!}</td>
+            <td>{!! $compteRendu->approche_solution !!}</td>
+            <td>{!! $compteRendu->action_retenu !!}</td>
+            <td>{{ $compteRendu->date }}</td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
+
 
 </body>
 </html>

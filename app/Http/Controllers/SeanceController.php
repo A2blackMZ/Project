@@ -119,103 +119,18 @@ class SeanceController extends Controller
         return response()->json($projets);
     }
 
-    public function generateReport($id)
-    {
-        // Récupérer la séance de supervision par son ID
-        $seance = Seance::findOrFail($id);
+    public function generatePdf($seanceId) {
+        $seance = Seance::findOrFail($seanceId);
 
-        // Construire les données nécessaires pour le rapport à partir de la séance
-        $data = [
-            'seance' => $seance,
-            // Ajoutez d'autres données nécessaires pour le rapport
-        ];
+        // Fetch all projects for the given session
+        $projetIds = $seance->projets->pluck('id');
 
-        // Créer une nouvelle instance Dompdf
-        $pdf = new Dompdf();
+        // Retrieve the reports for each project where 'used' field is false
+        $compteRendus = CompteRendu::whereIn('projet_id', $projetIds)
+                                    ->where('used', false)
+                                    ->get();
 
-        // Option pour permettre le chargement des images externes (le cas échéant)
-        $options = new Options();
-        $options->set('isHtml5ParserEnabled', true);
-        $options->set('isRemoteEnabled', true);
-        $pdf->setOptions($options);
-
-        // Générer le rapport en utilisant une vue HTML
-        $html = view('report.seance')->with($data)->render();
-        $pdf->loadHtml($html);
-
-        // Rendre le PDF
-        $pdf->render();
-
-        // Renvoyer le PDF au frontend
-        return $pdf->stream('rapport_seance.pdf');
-    }
-
-
-/*
-public function generatePdf($seanceId) {
-    $seance = Seance::findOrFail($seanceId);
-
-    // Fetch all projects for the given session
-    $projectIds = $seance->projets()->pluck('projet_id');
-
-    // Retrieve project information
-    $projets = Projet::whereIn('id', $projectIds)->get();
-
-    // Retrieve the reports for each project where 'used' field is false
-    $compteRendus = CompteRendu::whereIn('projet_id', $projectIds)
-                                ->where('used', false)
-                                ->get();
-
-    // Set the 'used' field to true for the retrieved reports
-    foreach ($compteRendus as $compteRendu) {
-        $compteRendu->used = true;
-        $compteRendu->save();
-    }
-
-    // Load the view and pass the data to generate the PDF
-    $pdf = PDF::loadView('report.seanceReport', [
-        'seance' => $seance,
-        'compteRendus' => $compteRendus,
-        'projets' => $projets
-    ]);
-
-    // Génère le nom de fichier unique
-    $filename = 'seance-report-' . time() . '.pdf';
-
-    // Sauvegarde le fichier PDF généré sur le serveur
-    $filePath = storage_path('app/reports' . $filename);
-    $pdf->save($filePath);
-
-    // Crée une entrée dans la table generated_reports avec le chemin du fichier
-    GeneratedReport::create([
-        'seance_id' => $seance->id,
-        'file_path' => $filePath
-    ]);
-
-    // Retourne le chemin absolu du fichier PDF généré
-    return $pdf->download($filename);
-}*/
-
-
-public function generatePdf($seanceId) {
-    $seance = Seance::findOrFail($seanceId);
-
-    // Fetch all projects for the given session
-    $projectIds = $seance->projets()->pluck('projet_id');
-
-    // Retrieve project information
-    $projets = Projet::whereIn('id', $projectIds)->get();
-
-    // Retrieve the reports for each project where 'used' field is false
-    $compteRendus = CompteRendu::whereIn('projet_id', $projectIds)
-                                ->where('used', false)
-                                ->get();
-
-    // Set the 'used' field to true for the retrieved reports
-    foreach ($compteRendus as $compteRendu) {
-        $compteRendu->used = true;
-        $compteRendu->save();
-    }
+        $projets = $seance->projets;
 
     // Load the view and pass the data to generate the PDF
     $pdf = PDF::loadView('report.seanceReport', [
@@ -238,10 +153,18 @@ public function generatePdf($seanceId) {
         'seance_id' => $seance->id,
         'file_path' => $fileUrl // Enregistrez l'URL ici
     ]);
+    // Set the 'used' field to true for the retrieved reports
+    foreach ($compteRendus as $compteRendu) {
+        $compteRendu->used = true;
+        $compteRendu->save();
+    }
+
+    //return response()->json($compteRendus);
 
     // Retourne le fichier PDF généré pour téléchargement
     return $pdf->download($filename);
 }
+
 
 public function getSeanceReports($seanceId) {
     // Récupère les rapports générés pour la séance donnée
