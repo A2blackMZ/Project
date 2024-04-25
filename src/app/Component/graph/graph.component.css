@@ -1,0 +1,15 @@
+/* Conteneur général pour les graphiques */
+.chart-container {
+  display: inline-block;
+  width: 45%;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* Style pour les éléments canvas (graphiques) */
+canvas {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #aaa;
+}

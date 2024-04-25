@@ -1,0 +1,61 @@
+<head>
+    <title>Creer un compte</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+        <!-- Colonne de l'image -->
+        <div class="col-md-6 b1" style=" background-image: url(assets/img/port.jpg); background-repeat: none; background-size: cover; background-position: center; height: 930px;">
+        </div>
+        <!-- Colonne du formulaire de connexion -->
+        <div class="col-md-6" style="height: 100%;">
+          <br><br><br>
+            <h2>Inscription</h2>
+                    <form (ngSubmit)="onSubmit()">
+          <h2 class="text-center"><strong>Create</strong> an account.</h2>
+          <div class="form-group">
+            <input type="text" class="form-control" name="name" [(ngModel)]="userData.name" placeholder="Nom">
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="email" name="email" placeholder="Email" [(ngModel)]="userData.email">
+          </div>
+
+          <div class="form-group">
+            <input class="form-control" type="password" name="password" placeholder="Mot de passe" [(ngModel)]="userData.password" autocomplete="section-red shipping new-password">
+            <!-- <button type="button" (click)="togglePasswordVisibility('password')">
+              <i class="fa fa-eye"></i> <!-- Remplacez par l'icône d'œil de votre choix
+            </button> -->
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="password" name="password-repeat" placeholder="Mot de passe (répéter)" autocomplete="section-red shipping new-password">
+            <!-- <button type="button" (click)="togglePasswordVisibility('password-repeat')">
+              <i class="fa fa-eye"></i> <!-- Remplacez par l'icône d'œil de votre choix
+            </button> -->
+          </div>
+
+
+          <div class="form-group">
+              <div class="form-check">
+                <label class="form-check-label">
+                <input class="form-check-input" type="checkbox">I agree to the license terms.
+              </label>
+              </div>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary btn-block" type="submit">Sign Up</button>
+          </div>
+          <a href="#" class="already" routerLink="/login">
+            You already have an account? Login here.
+          </a>
+      </form>
+      <p>{{ registrationError }}</p>
+            <br><br><br><br><br>
+        </div>
+    </div>
+</div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+

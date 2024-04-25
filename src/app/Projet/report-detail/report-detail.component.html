@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rapport de Séance de Supervision</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <!--<div *ngIf="loading" class="loading-container">
+    <img src="/assets/loading.gif" alt="Chargement en cours..." />
+  </div>-->
+
+    <app-topnavbar></app-topnavbar>
+    <div class="row">
+      <div class="col-md-3">
+        <app-leftnavbar></app-leftnavbar>
+      </div>
+      <div class="col-md-9">
+        <section class="ftco-section">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <div style="margin: 15px">
+                  <h1>Liste des Rapports de la Séance de Supervision</h1>
+
+                  <div class="table-responsive" style="overflow-y: scroll">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Rapport</th>
+                          <th>Date de création du rapport</th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let report of seanceReports">
+                          <td>
+                            <a
+                              href="http://localhost:8000{{ report.file_path }}"
+                              target="_blank"
+                              >Voir le fichier</a
+                            >
+                          </td>
+
+                          <td>{{ report.created_at }}</td>
+                          <td>
+                            <div class="dropdown">
+                              <a
+                                class="dropdown-toggle"
+                                href="#"
+                                id="userDropdown"
+                                role="button"
+                                data-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                              >
+                                <img
+                                  src="assets/img/menu.png"
+                                  style="width: 20px; height: 20px"
+                                />
+                              </a>
+                              <div
+                                class="dropdown-menu"
+                                aria-labelledby="userDropdown"
+                              ></div>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>

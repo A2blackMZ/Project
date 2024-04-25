@@ -1,0 +1,39 @@
+/* Styles pour la barre de navigation en haut */
+.navbar {
+  background-color:#425ea8; /* Couleur de fond #e9674b #3498db */
+}
+
+/* .container{
+  background-color:black;
+} */
+.navbar-brand {
+  color: white; /* Couleur du texte du logo */
+}
+
+.navbar-nav .nav-item .nav-link {
+  color: white; /* Couleur du texte des liens */
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+  color: #ff9800; /* Couleur de surbrillance au survol des liens */
+}
+
+.navbar-nav .nav-item.dropdown .dropdown-toggle::after {
+  color: white; /* Couleur de la flèche de bas pour le menu déroulant */
+}
+
+.dropdown-menu {
+  background-color: #3498db; /* Couleur de fond du menu déroulant */
+}
+
+.dropdown-item {
+  color: white; /* Couleur du texte du menu déroulant */
+}
+
+.dropdown-item:hover {
+  background-color:#ff9800; /* Couleur de surbrillance au survol des éléments du menu déroulant */
+}
+
+.navbar-nav .nav-item:last-child .nav-link {
+  margin-right: 0; /* Supprimer la marge de droite pour le dernier élément de navigation */
+}

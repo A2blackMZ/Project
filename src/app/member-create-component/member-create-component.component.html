@@ -1,0 +1,30 @@
+<div class="modal-content">
+  <div class="line1">
+    <h2>Enregistrement d'un utilisateur</h2>
+    <button
+      type="button"
+      class="btn-close"
+      (click)="closeModal()"
+      aria-label="Close"
+    ></button>
+  </div>
+  <form (ngSubmit)="addMember()" class="modal-body">
+
+    <div class="form-group">
+      <label for="user">Utilisateur :</label>
+      <mat-select placeholder="Sélectionner un utilisateur" name="user" id="user" [(ngModel)]="userData.selectedUserId">
+        <mat-option *ngFor="let user of users" [value]="user.id">{{ user.name }}</mat-option>
+      </mat-select>
+    </div>
+
+    <div class="form-group">
+      <label for="role">Rôle :</label>
+      <mat-select placeholder="Sélectionner un rôle" name="role" id="role" [(ngModel)]="userData.role">
+        <mat-option *ngFor="let role of roles" [value]="role">{{ role }}</mat-option>
+      </mat-select>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary mx-auto">Ajouter un membre</button>
+  </form>
+</div>

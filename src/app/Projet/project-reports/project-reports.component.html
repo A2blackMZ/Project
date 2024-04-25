@@ -1,0 +1,60 @@
+<div class="modal-content">
+  <div class="line1">
+    <h2>Création d'un Compte Rendu</h2>
+    <button
+      type="button"
+      class="btn-close"
+      (click)="closeModal()"
+      aria-label="Close"
+    ></button>
+  </div>
+  <form (ngSubmit)="createReport()" class="modal-body">
+    <div class="form-group">
+      <label for="evenement">Evenement</label>
+      <editor
+        apiKey="bw5yg8ceclbm45uva1xn703uy2dbdhb3quhtbk15ix7hcyrl"
+        [init]="editorConfig"
+        name="evenement"
+        id="evenement"
+        [(ngModel)]="compteRendu.evenement"
+        required
+      ></editor>
+    </div>
+    <div class="form-group">
+      <label for="difficultes">Difficultés</label>
+      <editor
+        apiKey="bw5yg8ceclbm45uva1xn703uy2dbdhb3quhtbk15ix7hcyrl"
+        [init]="editorConfig"
+        id="difficultes"
+        name="difficultes"
+        [(ngModel)]="compteRendu.difficultes"
+        required
+      ></editor>
+    </div>
+    <div class="form-group">
+      <label for="budget">Commentaires</label>
+      <editor
+        apiKey="bw5yg8ceclbm45uva1xn703uy2dbdhb3quhtbk15ix7hcyrl"
+        [init]="editorConfig"
+        type="text"
+        id="commentaires"
+        name="commentaires"
+        [(ngModel)]="compteRendu.commentaires"
+        required
+      ></editor>
+    </div>
+    <div class="form-group">
+      <label for="date">Date du compte rendu:</label>
+      <input
+        type="date"
+        id="date"
+        name="date"
+        [(ngModel)]="compteRendu.date"
+        class="form-control"
+        required
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary mx-auto">Ajouter</button>
+  </form>
+</div>

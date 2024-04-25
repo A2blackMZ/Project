@@ -1,0 +1,64 @@
+<div class="modal-content">
+  <div class="line1">
+    <h2>Enregistrement d'un utilisateur</h2>
+    <button
+      type="button"
+      class="btn-close"
+      (click)="closeModal()"
+      aria-label="Close"
+    ></button>
+  </div>
+  <form (ngSubmit)="createUser()" class="modal-body">
+    <div class="form-group">
+      <label for="name">Nom & Prénoms:</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        [(ngModel)]="userData.name"
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input
+        id="email"
+        name="email"
+        type="email"
+        [(ngModel)]="userData.email"
+        class="form-control"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="password">Mot de passe:</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        [(ngModel)]="userData.password"
+        class="form-control"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="role">Rôle :</label>
+      <mat-select
+        placeholder="Sélectionner un rôle"
+        name="role"
+        id="role"
+        [(ngModel)]="userData.role"
+      >
+        <mat-option *ngFor="let role of roles" [value]="role">{{ role }}</mat-option>
+      </mat-select>
+    </div>
+
+
+
+
+    <button type="submit" class="btn btn-primary mx-auto">Ajouter un utilisateur</button>
+  </form>
+</div>

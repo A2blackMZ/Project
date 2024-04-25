@@ -1,0 +1,79 @@
+<body style="overflow-x: auto; overflow-y: hidden">
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Colonne de l'image -->
+      <div
+        class="col-md-6 b1"
+        style="
+          background-image: url(assets/img/port.jpg);
+          background-repeat: none;
+          background-size: cover;
+          background-position: center;
+          height: 933px;
+        "port.jpg
+      ></div>
+      <!-- Colonne du formulaire de connexion -->
+      <div class="col-md-6" style="height: 100%">
+        <br /><br />
+        <img
+          src="assets/img/logoPort.png"
+          style="margin-left: 33%; width: 200px"
+        />
+        <div style="margin: -60px 0; padding: 102px">
+          <h2 style="margin-left: 170px">Connexion</h2>
+          <form (submit)="onSubmit()">
+            <div class="form-group">
+              <label for="email">Adresse e-mail:</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                placeholder="Entrez votre adresse e-mail"
+                [(ngModel)]="credentials.email"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="password">Mot de passe:</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                name="password"
+                placeholder="Entrez votre mot de passe"
+                [(ngModel)]="credentials.password"
+                autocomplete="section-red shipping new-password"
+                required
+              />
+            </div>
+            <button
+              type="submit"
+              class="btn btn-primary submit"
+              style="height: 37px; width: 117px; margin-left: 170px; padding: 0"
+            >
+              Se connecter
+            </button>
+            <div class="form-group d-md-flex mt-4">
+              <div class="w-50 text-left">
+                <label class="checkbox-wrap checkbox-primary mb-0"
+                  >Remember Me
+                  <input type="checkbox" checked />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="w-50 text-md-right">
+                <a href="#">Forgot Password</a>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- <p class="text-center">Not a member? <a data-toggle="tab" routerLink="/signup">Sign Up</a></p> -->
+        <br /><br /><br /><br /><br /><br /><br />
+      </div>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>

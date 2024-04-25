@@ -1,0 +1,107 @@
+  <app-topnavbar></app-topnavbar>
+  <div class="row">
+    <div class="col-md-3">
+      <app-leftnavbar></app-leftnavbar>
+    </div>
+    <div class="col-md-9">
+      <h2>Informations des Utilisateurs</h2>
+
+
+      <!-- Gestion des utilisateurs -->
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+                <h2
+                  class="card-title"
+                  style="display: inline; margin-right: 235px"
+                >
+                  Gestion des utilisateurs
+                </h2>
+                <button class="btn btn-success" (click)="openModalU()">
+                  Ajouter
+                </button>
+                <br />
+                <div class="table-responsive" style="overflow-y: scroll">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Nom & Prénoms</th>
+                        <th>Email</th>
+                        <th>Rôle</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let user of users">
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.role }}</td>
+                        <td>
+                          <div class="dropdown">
+                            <a
+                              class="dropdown-toggle"
+                              href="#"
+                              id="userDropdown"
+                              role="button"
+                              data-toggle="dropdown"
+                              aria-haspopup="true"
+                              aria-expanded="false"
+                            >
+                              <img
+                                src="assets/img/menu.png"
+                                style="width: 20px; height: 20px"
+                              />
+                            </a>
+                            <div
+                              class="dropdown-menu"
+                              aria-labelledby="userDropdown"
+                            >
+                              <a
+                                class="dropdown-item"
+                                (click)="openModalUpdateUser(user.id)"
+                                >Modifier</a
+                              >
+                              <a
+                                class="dropdown-item"
+                                (click)="destroyUser(user.id)"
+                                >Supprimer</a
+                              >
+
+                              <a
+                                *ngIf="!user.blocked"
+                                class="dropdown-item"
+                                (click)="blockUser(user.id)"
+                              >
+                                Bloquer
+                              </a>
+                              <a
+                                *ngIf="user.blocked"
+                                class="dropdown-item"
+                                (click)="unblockUser(user.id)"
+                              >
+                                Débloquer
+                              </a>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <!-- Gestion des Fichiers. Importations Affichage-->
+
+    </div>
+  </div>
+
+
+
+    <br />
