@@ -70,5 +70,22 @@ public function isBlocked()
     return $this->blocked === true;
 }
 
+/*
+public function notifications()
+{
+    return $this->hasMany(Notifications::class);
+}*/
+
+public function seances()
+{
+    return $this->hasMany(Seance::class);
+}
+
+
+
+public function isUser()
+{
+    return $this->role === 'user';
+}
 
 }

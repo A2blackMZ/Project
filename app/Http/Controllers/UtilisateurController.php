@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Projet;
+use App\Models\NotificationsUser;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class UtilisateurController extends Controller
 {
@@ -125,4 +128,28 @@ class UtilisateurController extends Controller
         $user->save();
         return response()->json(['message' => 'Utilisateur débloqué avec succès.']);
     }
+
+    public function seeNotification($userId)
+    {
+        $user = User::findOrFail($userId);
+
+        $notifications = $user->notifications()->get()/*->markAsRead()*/;
+
+        return response()->json(['notifications' => $notifications]);
+    }
+
+    public function getNotificationsById($notificationId, $userId)
+    {
+        $user = User::findOrFail($userId);
+        $notification = $user->notifications()->where('id', $notificationId)->first();
+        return response()->json(['notification' => $notification]);
+    }
+
+    public function deleteNotification($notificationId, $userId)
+    {
+        $user = User::findOrFail($userId);
+        $user->notifications()->where('id', $notificationId)->delete();
+        return response()->json(['message' => 'Notification supprimée avec succès.']);
+    }
+
 }

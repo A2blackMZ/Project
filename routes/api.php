@@ -58,6 +58,8 @@ Route::delete('/users/{userId}', [UtilisateurController::class, 'destroy']);
 Route::post('seances/{id}/generate-report', [SeanceController::class, 'generateReport']);
 
 
+
+
 Route::get('/comptes-rendus/{projetId}/pdf-data', [CompteRenduController::class, 'generatePDFData']);
 
 //GetBY
@@ -87,6 +89,19 @@ Route::delete('/files/{fileId}', [FichierAttacheController::class, 'destroy']);
 Route::get('generate_pdf/{seanceId}', [SeanceController::class, 'generatePDF']);
 
 Route::get('ReportsSeance/{seanceId}', [SeanceController::class, 'getSeanceReports']);
+
+
+
+
+
+//notifications
+
+Route::get('/SeeNotification/{userId}',[UtilisateurController::class, 'SeeNotification']);
+
+Route::delete('/delete/notification/{notificationId}/{userId}', [UtilisateurController::class, 'deleteNotification'] );
+
+Route::get('/notification/{notificationId}/{userId}', [UtilisateurController::class, 'getNotificationsById'] );
+
 
 Route::middleware('auth:api')->group(function () {
     Route::get('/user_', [AuthController::class, 'user']);

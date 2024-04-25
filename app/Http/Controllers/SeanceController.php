@@ -8,10 +8,16 @@ use App\Models\Projet;
 use App\Models\GeneratedReport;
 use App\Models\CompteRendu;
 use App\Http\Resources\SeanceResource;
+use App\Models\User;
+use App\Notifications\NotifyUser;
 use Illuminate\Support\Carbon;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\DB;
+
 
 //use Barryvdh\DomPDF\Facade as PDF;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -25,6 +31,16 @@ class SeanceController extends Controller
 
     public function store(Request $request)
     {
+
+        //$user = Auth::user();
+
+
+        $data = [];
+
+        // Vérifiez si 'date_supervision' est fourni dans la requête
+        if ($request->has('date_supervision')) {
+            $data['date_supervision'] = $request->input('date_supervision');
+        }
         $request->validate([
             // Vous pouvez ajuster les règles de validation selon vos besoins
         ]);
@@ -37,6 +53,11 @@ class SeanceController extends Controller
         }
 
         $data['nom_chef_projet'] = $request->input('nom_chef_projet');
+
+        $user = auth()->user();
+        if ($user) {
+            $data['user_id'] = $user->id;
+        }
 
         // Définissez la date de création comme la date actuelle sans heure
         $data['date_creation'] = now()->toDateString();
@@ -58,6 +79,7 @@ class SeanceController extends Controller
 
         // Créez une nouvelle séance en utilisant les données préparées
         $seance = Seance::create($data);
+        //$seance->save();
 
         // Récupérez les données des projets depuis la requête (ajustez selon vos besoins)
         $projetsData = $request->input('projets', []);
@@ -88,6 +110,13 @@ class SeanceController extends Controller
             $compteRendu = new CompteRendu($compteRenduData);
             $seance->comptesRendus()->save($compteRendu);
         }
+
+        // Retournez la réponse JSON avec les détails de la nouvelle séance
+        return response()->json([
+            'message' => 'Séance créée avec succès',
+            'seance' => $seance,
+            'user' => $user
+        ], 201);
 
         // Utilisez la ressource SéanceResource pour transformer la séance en réponse JSON
         return new SeanceResource($seance);
@@ -173,6 +202,17 @@ public function getSeanceReports($seanceId) {
     // Retourne les rapports
     return response()->json(['rapports' => $rapports]);
 }
+
+/*public function notify($seanceId)
+{
+
+    $seance = Seance::findOrFail($seanceId);
+    //$user = User::first();
+
+$user = Auth::user();
+    $user->notify(new NotifyUser($seance));
+    return response()->json(['message' => 'Notification sent successfully'], 200);
+}*/
 
 
 

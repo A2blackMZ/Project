@@ -170,6 +170,8 @@ return [
         App\Providers\RouteServiceProvider::class,
             //DOMPDF for generate report file
         Barryvdh\DomPDF\ServiceProvider::class,
+        Laravel\Ui\UiServiceProvider::class,
+
     ])->toArray(),
 
     /*

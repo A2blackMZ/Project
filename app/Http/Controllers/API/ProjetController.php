@@ -31,9 +31,11 @@ class ProjetController extends Controller
             mkdir($cheminDossier, 0777, true);
         }
 
+        $user = Auth::user();
+
         // Vous pouvez enregistrer le chemin du dossier dans la base de données si nécessaire
         $projet->update(['FolderPath' => $cheminDossier]);
-
+        return response()->json($user);
 
 
         return new ProjetResource($projet);
