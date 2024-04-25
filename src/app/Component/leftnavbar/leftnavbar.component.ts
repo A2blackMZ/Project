@@ -11,10 +11,6 @@ export class LeftnavbarComponent implements OnInit {
 
   constructor(private dataService: DataService) { }
 
-  /*ngOnInit(): void {
-    this.getUserInfo();
-  }*/
-
   ngOnInit(): void {
     this.getUserRole();
   }
@@ -22,14 +18,14 @@ export class LeftnavbarComponent implements OnInit {
   getUserRole(): void {
     this.dataService.getUserRole().subscribe(
       (role: string) => {
-        this.userRole = role;
-        console.log('User role:', this.userRole); // Affichage du rôle dans la console
-        // Continuer avec d'autres actions ici, si nécessaire
+        this.userRole = role.toLowerCase(); // Conversion en min¤
+        console.log('User role:', this.userRole); // Affichage du rôle dans la console (debug)
       },
       (error) => {
         console.error('Error fetching user role:', error);
       }
     );
   }
+
 
 }

@@ -123,10 +123,6 @@ logout(): Observable<any> {
     return this.http.get<any[]>(`${this.apiUrl}/users`);
   }
 
-  /*getSingleUser() {
-    return this.http.get<any>(`${this.apiUrl}/users/one`);
-  }*/
-
   getUserRole(): Observable<string> {
     return this.getAllUsers().pipe(
       switchMap(users => {
@@ -134,7 +130,7 @@ logout(): Observable<any> {
           map(userInfo => {
             const currentUser = users.find(user => user.id === userInfo.id);
             if (currentUser) {
-              return currentUser.role;
+              return currentUser.role.toLowerCase(); //Insensible à la casse
             } else {
               throw new Error('Current user not found in the list');
             }
@@ -147,6 +143,7 @@ logout(): Observable<any> {
       })
     );
   }
+
 
 
   createSeance(seanceData:any): Observable<any> {

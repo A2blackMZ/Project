@@ -33,7 +33,7 @@ interface UserData {
 export class MemberCreateComponent implements OnInit {
 
   selectedRoles: string[] = [];
-  roles: string[] = ['Admin', 'User', 'Manager'];
+  roles: string[] = ['admin', 'user', 'manager'];
 
 
 

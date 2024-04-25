@@ -2,7 +2,7 @@
   <div class="scroll-sidebar">
     <nav class="sidebar-nav">
       <ul id="sidebarnav" class="sidebar-menu">
-        <li class="sidebar-item pt-2" *ngIf="userRole === 'admin' || userRole === 'manager'">
+        <li class="sidebar-item pt-2" *ngIf="userRole === 'admin' || userRole === 'manager' || userRole === 'user'">
           <a
             class="sidebar-link waves-effect waves-dark sidebar-link"
             routerLink="/dashboard"
@@ -13,7 +13,7 @@
             <span class="hide-menu">Dashboard</span>
           </a>
         </li>
-        <li class="sidebar-item" *ngIf="userRole === 'admin' || userRole === 'manager'">
+        <li class="sidebar-item" *ngIf="userRole === 'admin' || userRole === 'manager' || userRole === 'user'">
           <a
             class="sidebar-link waves-effect waves-dark sidebar-link"
             routerLink="/projets"
@@ -23,7 +23,7 @@
             <span class="hide-menu">Gestion de Projet</span>
           </a>
         </li>
-        <li class="sidebar-item" *ngIf="userRole === 'admin' || userRole === 'manager'">
+        <li class="sidebar-item" *ngIf="userRole === 'admin'">
           <a
             class="sidebar-link waves-effect waves-dark sidebar-link"
             routerLink="/seance"
@@ -33,7 +33,7 @@
             <span class="hide-menu">Séance de Supervision</span>
           </a>
         </li>
-        <li class="sidebar-item" *ngIf="userRole === 'admin' || userRole === 'manager'">
+        <li class="sidebar-item" *ngIf="userRole === 'admin' || userRole === 'manager' || userRole === 'user'">
           <a
             class="sidebar-link waves-effect waves-dark sidebar-link"
             routerLink="/rapport"
@@ -43,7 +43,7 @@
             <span class="hide-menu">Rapports</span>
           </a>
         </li>
-        <li class="sidebar-item" *ngIf="userRole === 'admin' || userRole === 'manager'">
+        <li class="sidebar-item" *ngIf="userRole === 'admin' || userRole === 'manager' || userRole === 'user'">
           <a
             class="sidebar-link waves-effect waves-dark sidebar-link"
             href="map-google.html"
