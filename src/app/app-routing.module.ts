@@ -25,6 +25,7 @@ import { UserDetailComponent } from './users/user-detail/user-detail.component';
 import { UserCreateComponent } from './users/user-create/user-create.component';
 import { UserUpdateComponent } from './users/user-update/user-update.component';
 import { FichierAttahesComponent } from './fichier-attahes/fichier-attahes.component';
+import { NotifComponent } from './notif/notif.component';
 
 const routes: Routes = [
   { path: '', component : HomeComponent},
@@ -38,6 +39,7 @@ const routes: Routes = [
   { path: 'projets', component: ProjetsComponent },
   { path: 'users', component: UserListComponent },
   { path: 'form', component: ProjectFormComponent },
+  { path: 'notif/:id', component: NotifComponent },
   { path: 'project-details/:id', component: ProjectDetailsComponent},
   //{ path: 'list', component: UserListComponent },
   { path: 'detail/:id', component: UserDetailComponent },

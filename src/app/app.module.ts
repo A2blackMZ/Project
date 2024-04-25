@@ -49,6 +49,7 @@ import { AccueilComponent } from './Seance/Accueil/accueil.component';
 import { SeanceRegisterComponent } from './Seance/seance-register/seance-register.component';
 import { TabsComponentComponent } from './Component/tabs-component/tabs-component.component';
 //import { RapportComponent } from './rapport/rapport.component';
+import { NotifComponent } from './notif/notif.component';
 
 
 import { UserListComponent } from './users/user-list/user-list.component';
@@ -88,7 +89,8 @@ const appRoute: Routes = [{
     UserUpdateComponent,
     UserCreateComponent,
     UserDetailComponent,
-    UserListComponent
+    UserListComponent,
+    NotifComponent,
   ],
   imports: [
     MatPaginatorModule,

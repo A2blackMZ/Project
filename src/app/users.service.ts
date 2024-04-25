@@ -56,4 +56,18 @@ export class UsersService {
   destroyUser(userId: number): Observable<any> {
     return this.http.delete<any>(`${this.baseUrl}/users/${userId}`);
   }
+
+  getNotifications(userId: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/SeeNotification/${userId}`);
+  }
+
+  deleteNotification(notificationId: number, userId: number): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}/delete/notification/${notificationId}/${userId}`);
+  }
+
+  getNotificationById(notificationId: number, userId: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/notification/${notificationId}/${userId}`);
+  }
+
+
 }

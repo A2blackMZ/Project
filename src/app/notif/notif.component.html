@@ -1,0 +1,64 @@
+<div *ngIf="loading" class="loading-container">
+  <img src="/assets/loading.gif" alt="Chargement en cours..." />
+</div>
+
+<app-topnavbar></app-topnavbar>
+<div class="row">
+  <div class="col-md-3">
+    <app-leftnavbar></app-leftnavbar>
+  </div>
+  <div class="col-md-9">
+    <!--
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h2
+                class="card-title"
+                style="display: inline; margin-right: 235px"
+              >
+                Notifications
+              </h2>
+              <br />
+              <div class="table-responsive" style="overflow-y: scroll">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>type</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let notification of notifications">
+                      <td>{{ notification.type }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+                  -->
+
+
+
+                  <div *ngIf="notifications.length > 0">
+                    <ul>
+                      <li *ngFor="let notification of notifications">
+                        <div>
+                          <h3>{{ notification.title }}</h3>
+                          <p>{{ notification.message }}</p>
+                          <p>Date: {{ notification.date }}</p>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div *ngIf="notifications.length === 0">
+                    <p>Aucune notification à afficher pour le moment.</p>
+                  </div>
+
+
+</div>
