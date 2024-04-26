@@ -1,5 +1,9 @@
+
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { map, switchMap } from 'rxjs/operators';
+import { throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import * as jwt_decode from 'jwt-decode';
 
@@ -116,6 +120,33 @@ logout(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/user-info`);
   }
 
+  getAllUsers(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/users`);
+  }
+
+  getUserRole(): Observable<string> {
+    return this.getAllUsers().pipe(
+      switchMap(users => {
+        return this.getUserInfo().pipe(
+          map(userInfo => {
+            const currentUser = users.find(user => user.id === userInfo.id);
+            if (currentUser) {
+              return currentUser.role.toLowerCase(); //Insensible à la casse
+            } else {
+              throw new Error('Current user not found in the list');
+            }
+          })
+        );
+      }),
+      catchError(error => {
+        console.error('Error fetching user role:', error);
+        return throwError('Unable to fetch user role');
+      })
+    );
+  }
+
+
+
   createSeance(seanceData:any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/seances/ajout`, seanceData);
   }
@@ -172,5 +203,3 @@ getSeanceReports(seanceId: number): Observable<any> {
 }
 
 }
-
-
