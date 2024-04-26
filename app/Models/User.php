@@ -76,11 +76,6 @@ public function notifications()
     return $this->hasMany(Notifications::class);
 }*/
 
-public function seances()
-{
-    return $this->hasMany(Seance::class);
-}
-
 
 
 public function isUser()

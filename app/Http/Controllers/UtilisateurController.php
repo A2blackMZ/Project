@@ -135,7 +135,7 @@ class UtilisateurController extends Controller
 
         $notifications = $user->notifications()->get()/*->markAsRead()*/;
 
-        return response()->json(['notifications' => $notifications]);
+        return response()->json($notifications);
     }
 
     public function getNotificationsById($notificationId, $userId)

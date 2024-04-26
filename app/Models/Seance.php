@@ -12,7 +12,6 @@ class Seance extends Model
         'date_creation',
         'nom_chef_projet',
         'statut',
-        'user_id'
     ];
 
     // Relation avec les projets liés à la séance
@@ -37,11 +36,6 @@ class Seance extends Model
     {
         return $this->belongsToMany(GeneratedReport::class);
     }
-
-    public function user()
-{
-    return $this->belongsTo(User::class);
-}
 
 
 }

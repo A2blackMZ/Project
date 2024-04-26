@@ -13,8 +13,6 @@ return new class extends Migration
     {
         Schema::create('seances', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('reference')->unique(); // Ajoutez la colonne "reference"
             $table->date('date_supervision')->nullable()->default(null);
             $table->date('date_creation'); // Ajoutez la colonne "date_creation"
