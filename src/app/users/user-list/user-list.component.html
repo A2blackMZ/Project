@@ -1,8 +1,15 @@
-  <app-topnavbar></app-topnavbar>
-  <div class="row">
-    <div class="col-md-3">
-      <app-leftnavbar></app-leftnavbar>
-    </div>
+<nz-spin *ngIf="loading" nzSimple></nz-spin>
+
+
+  <nz-layout>
+    <app-topnavbar></app-topnavbar>
+    <nz-layout nzHasSider>
+      
+      <nz-sider nzWidth="280px">
+        <app-leftnavbar></app-leftnavbar>
+      </nz-sider>
+
+
     <div class="col-md-9">
       <h2>Informations Users</h2>
 
@@ -100,7 +107,7 @@
       <!-- Gestion des Fichiers. Importations Affichage-->
   
     </div>
-  </div>
+    </nz-layout>
   
 
 

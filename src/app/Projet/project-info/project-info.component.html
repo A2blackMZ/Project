@@ -1,90 +1,51 @@
-<div class="modal-content">
-  <div class="line1">
-    <h2>Modification d'un Projet</h2>
-    <button type="button" class="btn-close" aria-label="Close"></button>
-    <!-- (click)="closeModal()" -->
-  </div>
-  <form class="modal-body" [formGroup]="form">
-    <!--(submit)="modifierProjet()" -->
-    <div class="form-group">
-      <label for="nom">Nom du Projet</label>
-      <input
-        type="text"
-        class="form-control"
-        id="nom"
-        formControlName="nom"
-        name="nom"
-        required
-      />
+<nz-modal [(nzVisible)]="isVisible" [nzTitle]="'Modification d\'un Projet'" (nzOnCancel)="handleCancel()" (nzOnOk)="modifierProjet()">
+  <form nz-form [formGroup]="form" (ngSubmit)="modifierProjet()">
+    <div nz-form-item>
+      <nz-form-label [nzRequired]="true" nzFor="nom">Nom du Projet:</nz-form-label>
+      <nz-form-control>
+        <input nz-input formControlName="nom" id="nom" nzSize="large" required />
+      </nz-form-control>
     </div>
-    <div class="form-group">
-      <label for="budget">Budget Alloué</label>
-      <input
-        type="number"
-        class="form-control"
-        id="budget"
-        formControlName="budget_alloue"
-        name="budget"
-        required
-      />
+    <div nz-form-item>
+      <nz-form-label [nzRequired]="true" nzFor="budget_alloue">Budget Alloué:</nz-form-label>
+      <nz-form-control>
+        <input nz-input type="number" formControlName="budget_alloue" id="budget_alloue" nzSize="large" required />
+      </nz-form-control>
     </div>
-    <div class="form-group">
-      <label for="budget">Budget Dépensé</label>
-      <input
-        type="number"
-        class="form-control"
-        id="budget"
-        formControlName="budget_depense"
-        name="budget"
-        required
-      />
+    <div nz-form-item>
+      <nz-form-label [nzRequired]="true" nzFor="budget_depense">Budget Dépensé:</nz-form-label>
+      <nz-form-control>
+        <input nz-input type="number" formControlName="budget_depense" id="budget_depense" nzSize="large" required />
+      </nz-form-control>
     </div>
-    <div class="form-group">
-      <label for="dateDebut">Date de Début</label>
-      <input
-        type="date"
-        class="form-control"
-        id="dateDebut"
-        formControlName="date_debut"
-        name="dateDebut"
-        required
-      />
+    <div nz-form-item>
+      <nz-form-label [nzRequired]="true" nzFor="dateDebut">Date de Début:</nz-form-label>
+      <nz-form-control>
+        <input nz-date formControlName="date_debut" id="dateDebut" nzSize="large" required />
+      </nz-form-control>
     </div>
-    <div class="form-group">
-      <label for="date_fin_prevue">Date de Fin Prévue:</label>
-      <input
-        type="date"
-        id="date_fin_prevue"
-        name="date_fin_prevue"
-        formControlName="date_fin_prevue"
-        class="form-control"
-        required
-      />
+    <div nz-form-item>
+      <nz-form-label [nzRequired]="true" nzFor="date_fin_prevue">Date de Fin Prévue:</nz-form-label>
+      <nz-form-control>
+        <input nz-date formControlName="date_fin_prevue" id="date_fin_prevue" nzSize="large" required />
+      </nz-form-control>
     </div>
-    <div class="form-group">
-      <label for="objectif">Objectifs du Projet:</label>
-      <input
-        type="text"
-        id="objectif"
-        name="objectif"
-        formControlName="objectif"
-        class="form-control"
-        required
-      />
+    <div nz-form-item>
+      <nz-form-label [nzRequired]="true" nzFor="objectif">Objectifs du Projet:</nz-form-label>
+      <nz-form-control>
+        <input nz-input formControlName="objectif" id="objectif" nzSize="large" required />
+      </nz-form-control>
     </div>
-    <div class="form-group">
-      <label for="risques">Risques du Projet:</label>
-      <input
-        type="text"
-        id="risques"
-        name="risques"
-        formControlName="risques"
-        class="form-control"
-        required
-      />
+    <div nz-form-item>
+      <nz-form-label [nzRequired]="true" nzFor="risques">Risques du Projet:</nz-form-label>
+      <nz-form-control>
+        <input nz-input formControlName="risques" id="risques" nzSize="large" required />
+      </nz-form-control>
     </div>
-    <button type="submit" class="btn btn-primary" (click)="modifierProjet()">
-      Modifier
-    </button>
+    <div nz-form-item nz-row nzJustify="end">
+      <nz-form-control>
+        <button nz-button nzType="primary" type="submit">Modifier</button>
+      </nz-form-control>
+    </div>
   </form>
-</div>
+</nz-modal>

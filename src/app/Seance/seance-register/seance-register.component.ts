@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./seance-register.component.css']
 })
 export class SeanceRegisterComponent implements OnInit{
+  date_supervision!: null
   currentStep = 1;
   dateReunion: string = new Date().toISOString().slice(0, 10);
   // dateReunion!: string; // Stocke la date de réunion
@@ -79,6 +80,15 @@ export class SeanceRegisterComponent implements OnInit{
 
      this.router.navigate(['/seance']);
       });
+    }
+
+    onDateChange(date: Date): void {
+      if (date) {
+        const formattedDate = date.toISOString().slice(0, 10); // Exemple : "2015-02-15"
+        this.newSeance.date_supervision = formattedDate;
+      } else {
+        this.newSeance.date_supervision = null;
+      }
     }
 
 

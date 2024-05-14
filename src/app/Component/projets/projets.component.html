@@ -1,84 +1,82 @@
-<div *ngIf="loading" class="loading-container">
-  <img src="/assets/loading.gif" alt="Chargement en cours..." />
-</div>
 
-<app-topnavbar></app-topnavbar>
-<div class="row">
-  <div class="col-md-3">
-    <app-leftnavbar></app-leftnavbar>
-  </div>
+  <nz-layout>
+    <app-topnavbar></app-topnavbar>
+    <nz-layout nzHasSider>
+      
+      <nz-sider nzWidth="280px">
+        <app-leftnavbar></app-leftnavbar>
+      </nz-sider>
+
   <div class="col-md-9">
     <div class="container-fluid">
       <div class="line1">
         <h2>Liste des Projets</h2>
         <button class="btn btn-success" (click)="openModal()">Nouveau</button>
       </div>
-      <table class="table">
+
+<nz-table [nzData]="displayedProjects" [nzPageSize]="pageSize" [nzPageIndex]="pageIndex" (nzPageIndexChange)="onPageIndexChange($event)">
         <thead>
-          <tr>
-            <th>Nom</th>
-            <th>Budget Alloué</th>
-            <th>Budget Dépensé</th>
-            <th>Date Debut</th>
-            <th>Date Fin</th>
-            <th>Objectif</th>
-            <th>risques</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let project of displayedProjects">
-            <td>{{ project.nom }}</td>
-            <td>{{ project.budget_alloue }}</td>
-            <td>{{ project.budget_depense }}</td>
-            <td>{{ project.date_debut }}</td>
-            <td>{{ project.date_fin_prevue }}</td>
-            <td>{{ project.objectif }}</td>
-            <td>{{ project.risques }}</td>
-            <td>
-              <div class="dropdown">
-                <a
-                  class="dropdown-toggle"
-                  href="#"
-                  id="userDropdown"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  <img src="assets/img/menu.png" />
-                </a>
-                <div class="dropdown-menu" aria-labelledby="userDropdown">
-                  <a
-                    class="dropdown-item"
-                    href="#"
-                    [routerLink]="['/project-details', project.id]"
-                    >Détails</a
-                  >
-                  <a
-                    class="dropdown-item"
-                    (click)="openModalUpdateProjet(project)"
-                    >Modifier</a
-                  >
-                  <a
-                    class="dropdown-item"
-                    (click)="deleteProjet(project.id)"
-                    >Supprimer</a
-                  >
-                </div>
-              </div>
-              <!-- <a class="btn btn-primary"><img src="assets/img/eye-solid.svg">VOIR</a>
-              <a class="btn btn-primary"><img src="assets/img/edit-solid.svg">MODIFIER</a>
-              <a class="btn btn-primary" mat-raised-button (click)="openModalF()"><img src="assets/img/plus-solid.svg">AJOUTER TACHES</a> -->
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <!-- <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25]"></mat-paginator> -->
-      <mat-paginator
+<tr>
+<th>Nom</th>
+<th>Budget Alloué</th>
+<th>Budget Dépensé</th>
+<th>Date Debut</th>
+<th>Date Fin</th>
+<th>Objectif</th>
+<th>risques</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody>
+<tr *ngFor="let project of displayedProjects">
+<td>{{ project.nom }}</td>
+<td>{{ project.budget_alloue }}</td>
+<td>{{ project.budget_depense }}</td>
+<td>{{ project.date_debut }}</td>
+<td>{{ project.date_fin_prevue }}</td>
+<td>{{ project.objectif }}</td>
+<td>{{ project.risques }}</td>
+<td>
+  <div class="dropdown">
+    <a
+      class="dropdown-toggle"
+      href="#"
+      id="userDropdown"
+      role="button"
+      data-toggle="dropdown"
+      aria-haspopup="true"
+      aria-expanded="false"
+    >
+      <img src="assets/img/menu.png" />
+    </a>
+    <div class="dropdown-menu" aria-labelledby="userDropdown">
+      <a
+        class="dropdown-item"
+        href="#"
+        [routerLink]="['/project-details', project.id]"
+        >Détails</a
+      >
+      <a
+        class="dropdown-item"
+        (click)="openModalUpdateProjet(project)"
+        >Modifier</a
+      >
+      <a
+        class="dropdown-item"
+        (click)="deleteProjet(project.id)"
+        >Supprimer</a
+      >
+    </div>
+  </div>
+  
+</td>
+</tr>
+</tbody>
+</nz-table>
+<mat-paginator
         [pageSize]="pageSize"
         [pageSizeOptions]="pageSizeOptions"
       ></mat-paginator>
     </div>
+
   </div>
-</div>

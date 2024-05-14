@@ -1,92 +1,89 @@
-<div *ngIf="loading" class="loading-container">
-  <img src="/assets/loading.gif" alt="Chargement en cours..." />
-</div>
+<nz-spin *ngIf="loading" nzSimple></nz-spin>
 
-<app-topnavbar></app-topnavbar>
-<div class="row">
-  <div class="col-md-3">
-    <app-leftnavbar></app-leftnavbar>
-  </div>
-  <div class="col-md-9">
-    <h2>Informations du Projet</h2>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="card card-margin">
-            <div class="card-header no-border">
-              <h5 class="card-title" *ngIf="project">{{ project.nom }}</h5>
-          </div>
 
-            <div class="card-body pt-0">
-              <div class="widget-49">
-                <ol class="widget-49-meeting-points">
-                  <li class="widget-49-meeting-item">
-                    <strong>Objectifs du Projet :</strong
-                    ><span *ngIf="project">{{ project.objectif }}</span>
-                  </li>
-                  <li class="widget-49-meeting-item">
-                    <strong>Risques du Projet:</strong
-                    ><span *ngIf="project">{{ project.risques }}</span>
-                  </li>
-                  <!-- <li class="widget-49-meeting-item"><span>Session timeout increase to 30 minutes</span></li> -->
-                </ol>
+  <nz-layout>
+    <app-topnavbar></app-topnavbar>
+    <nz-layout nzHasSider>
+      
+      <nz-sider nzWidth="280px">
+        <app-leftnavbar></app-leftnavbar>
+      </nz-sider>
+
+  
+    <nz-content>
+      <div *ngIf="loading" class="loading-container">
+        <img src="/assets/loading.gif" alt="Chargement en cours..." />
+      </div>
+
+      <h2>Informations du Projet</h2>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="card card-margin">
+              <div class="card-header no-border">
+                <h5 class="card-title" *ngIf="project">{{ project.nom }}</h5>
+              </div>
+              <div class="card-body pt-0">
+                <div class="widget-49">
+                  <ul class="widget-49-meeting-points">
+                    <li class="widget-49-meeting-item">
+                      <strong>Objectifs du Projet :</strong>
+                      <span *ngIf="project">{{ project.objectif }}</span>
+                    </li>
+                    <li class="widget-49-meeting-item">
+                      <strong>Risques du Projet:</strong>
+                      <span *ngIf="project">{{ project.risques }}</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="card card-margin">
-            <div class="card-header no-border">
-              <h5 class="card-title">Date</h5>
-            </div>
-            <div class="card-body pt-0">
-              <div class="widget-49">
-                <div class="widget-49-title-wrapper">
-                  <div class="widget-49-date-primary">
-                    <span class="widget-49-date-day"
-                      ><img src="assets/img/calendar.png"
-                    /></span>
-                    <!-- <span class="widget-49-date-month">apr</span> -->
-                  </div>
-                  <div class="widget-49-meeting-info">
-                    <span class="widget-49-pro-title" *ngIf="project"
-                      ><strong>Début :</strong> {{ project.date_debut }}</span
-                    >
-                    <span class="widget-49-pro-title" *ngIf="project"
-                      ><strong>Fin (Prévue) :</strong>
-                      {{ project.date_fin_prevue }}</span
-                    >
-                    <br /><br />
+          <div class="col-lg-4">
+            <div class="card card-margin">
+              <div class="card-header no-border">
+                <h5 class="card-title">Date</h5>
+              </div>
+              <div class="card-body pt-0">
+                <div class="widget-49">
+                  <div class="widget-49-title-wrapper">
+                    <div class="widget-49-date-primary">
+                      <span class="widget-49-date-day"><img src="assets/img/calendar.png"/></span>
+                    </div>
+                    <div class="widget-49-meeting-info">
+                      <span class="widget-49-pro-title" *ngIf="project">
+                        <strong>Début :</strong> {{ project.date_debut }}
+                      </span>
+                      <span class="widget-49-pro-title" *ngIf="project">
+                        <strong>Fin (Prévue) :</strong> {{ project.date_fin_prevue }}
+                      </span>
+                      <br /><br />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="card card-margin">
-            <div class="card-header no-border">
-              <h5 class="card-title">Budget</h5>
-            </div>
-            <div class="card-body pt-0">
-              <div class="widget-49">
-                <div class="widget-49-title-wrapper">
-                  <div class="widget-49-date-primary">
-                    <span class="widget-49-date-day"
-                      ><img src="assets/img/coin1.png"
-                    /></span>
-                    <!-- <span class="widget-49-date-month">apr</span> -->
-                  </div>
-                  <div class="widget-49-meeting-info">
-                    <span class="widget-49-pro-title" *ngIf="project"
-                      ><strong>Alloué:</strong>
-                      {{ project.budget_alloue }} FCFA</span
-                    >
-                    <span class="widget-49-pro-title" *ngIf="project"
-                      ><strong>Dépensé:</strong>
-                      {{ project.budget_depense }} FCFA</span
-                    >
-                    <br /><br />
+          <div class="col-lg-4">
+            <div class="card card-margin">
+              <div class="card-header no-border">
+                <h5 class="card-title">Budget</h5>
+              </div>
+              <div class="card-body pt-0">
+                <div class="widget-49">
+                  <div class="widget-49-title-wrapper">
+                    <div class="widget-49-date-primary">
+                      <span class="widget-49-date-day"><img src="assets/img/coin1.png"/></span>
+                    </div>
+                    <div class="widget-49-meeting-info">
+                      <span class="widget-49-pro-title" *ngIf="project">
+                        <strong>Alloué:</strong> {{ project.budget_alloue }} FCFA
+                      </span>
+                      <span class="widget-49-pro-title" *ngIf="project">
+                        <strong>Dépensé:</strong> {{ project.budget_depense }} FCFA
+                      </span>
+                      <br /><br />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -94,25 +91,18 @@
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="card">
-            <div class="card-body">
-              <h2
-                class="card-title"
-                style="display: inline; margin-right: 235px"
-              >
-                Tâches du Projet
-              </h2>
-              <button class="btn btn-success" (click)="openModalF()">
-                Ajouter
-              </button>
-              <br />
-              <div class="table-responsive" style="overflow-y: scroll">
-                <table class="table">
+      <!-- Tâches du Projet -->
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <nz-card>
+              <div nz-title>
+                <h2>Tâches du Projet</h2>
+              </div>
+              <div nz-body>
+                <button nz-button nzType="primary" (click)="openModalF()">Ajouter</button>
+                <nz-table [nzData]="tasks">
                   <thead>
                     <tr>
                       <th>Nom de la Tâche</th>
@@ -125,106 +115,73 @@
                     <tr *ngFor="let task of tasks">
                       <td>{{ task.nom }}</td>
                       <td>{{ task.description }}</td>
-                      <div [ngSwitch]="task.etat">
-                        <div *ngSwitchCase="'Enregistré'">
-                          <td>
-                            <label class="badge badge-info">{{
-                              task.etat
-                            }}</label>
-                          </td>
-                        </div>
-                        <div *ngSwitchCase="'En cours'">
-                          <td>
-                            <label class="badge badge-warning">{{
-                              task.etat
-                            }}</label>
-                          </td>
-                        </div>
-                        <div *ngSwitchCase="'Terminé'">
-                          <td>
-                            <label class="badge badge-success">{{
-                              task.etat
-                            }}</label>
-                          </td>
-                        </div>
-                        <div *ngSwitchCase="'Annulé'">
-                          <td>
-                            <label class="badge badge-danger">{{
-                              task.etat
-                            }}</label>
-                          </td>
-                        </div>
-                      </div>
                       <td>
-                        <div class="dropdown">
-                          <a
-                            class="dropdown-toggle"
-                            href="#"
-                            id="userDropdown"
-                            role="button"
-                            data-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                          >
-                            <img
-                              src="assets/img/menu.png"
-                              style="width: 20px; height: 20px"
-                            />
-                          </a>
-                          <div
-                            class="dropdown-menu"
-                            aria-labelledby="userDropdown"
-                          >
-                            <a
-                              class="dropdown-item"
-                              (click)="openModalUpdateTache(task)"
-                              >Modifier</a
-                            >
-                            <a
-                              class="dropdown-item"
-                              (click)="deleteTache(task.id)"
-                              >Supprimer</a
-                            >
-                          </div>
-                        </div>
+                        <nz-badge [nzStatus]="getBadgeStatus(task.etat)">{{ task.etat }}</nz-badge>
                       </td>
+                    
+                <td>
+                  <div class="dropdown">
+                    <a
+                      class="dropdown-toggle"
+                      href="#"
+                      id="userDropdown"
+                      role="button"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <img
+                        src="assets/img/menu.png"
+                        style="width: 20px; height: 20px"
+                      />
+                    </a>
+                    <div
+                      class="dropdown-menu"
+                      aria-labelledby="userDropdown"
+                    >
+                      <a
+                        class="dropdown-item"
+                        (click)="openModalUpdateTache(task)"
+                        >Modifier</a
+                      >
+                      <a
+                        class="dropdown-item"
+                        (click)="deleteTache(task.id)"
+                        >Supprimer</a
+                      >
+                    </div>
+                  </div>
+                </td>
                     </tr>
                   </tbody>
-                </table>
+                </nz-table>
               </div>
-            </div>
+            </nz-card>
           </div>
-        </div>
-        <div class="col-md-6">
-          <div class="card">
-            <div class="card-body">
-              <h2
-                class="card-title"
-                style="display: inline; margin-right: 235px"
-              >
-                Comptes Rendus
-              </h2>
-              <button class="btn btn-success" (click)="openModalC()">
-                Ajouter
-              </button>
-              <br />
-              <div class="table-responsive">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>Événement</th>
-                      <th>Difficultés</th>
-                      <th>Commentaires</th>
-                      <th>Date</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let compteRendu of comptesRendus">
-                      <td [innerHTML]="compteRendu.evenement"></td>
-                      <td [innerHTML]="compteRendu.difficultes"></td>
-                      <td [innerHTML]="compteRendu.commentaires"></td>
-                      <td>{{ compteRendu.date }}</td>
+          <!-- Comptes Rendus -->
+            <div class="col-md-6">
+                  <nz-card>
+                    <div nz-title>
+                      <h2>Comptes Rendus du Projet</h2>
+                    </div>
+                    <div nz-body>
+                      <button nz-button nzType="primary" (click)="openModalC()">Ajouter</button>
+                      <nz-table [nzData]="comptesRendus" nzBordered nzSize="middle">
+                        <thead>
+                          <tr>
+                            <th nzWidth="25%">Événement</th>
+                            <th nzWidth="25%">Difficultés</th>
+                            <th nzWidth="25%">Commentaires</th>
+                            <th nzWidth="15%">Date</th>
+                            <th nzWidth="10%">Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let cr of comptesRendus">
+                            <td [innerHTML]="cr.evenement"></td>
+                      <td [innerHTML]="cr.difficultes"></td>
+                      <td [innerHTML]="cr.commentaires"></td>
+                      <td>{{ cr.date }}</td>
                       <td>
                         <div class="dropdown">
                           <a
@@ -247,53 +204,45 @@
                           >
                             <a
                               class="dropdown-item"
-                              (click)="openReportDetails(compteRendu)"
+                              (click)="openReportDetails(cr)"
                               >Détails</a
                             >
                             <a
                               class="dropdown-item"
-                              (click)="openModalUpdateReport(compteRendu)"
+                              (click)="openModalUpdateReport(cr)"
                               >Modifier</a
                             >
                             <a
                               class="dropdown-item"
-                              (click)="deleteCompteRendu(compteRendu.id)"
+                              (click)="deleteCompteRendu(cr.id)"
                               >Supprimer</a
                             >
                             <!-- (click)="modifierTache(task)" -->
                           </div>
                         </div>
                       </td>
-                    </tr>
-                  </tbody>
-                </table>
+                          </tr>
+                        </tbody>
+                      </nz-table>
+                    </div>
+                  </nz-card>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <div><p></p></div>
+            <br><br>
 
-    <!-- Gestion des utilisateurs -->
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="card">
-            <div class="card-body">
-              <h2
-                class="card-title"
-                style="display: inline; margin-right: 235px"
-              >
-                Gestion des membres
-              </h2>
-              <button class="btn btn-success" (click)="openModalU()">
-                Ajouter
-              </button>
-              <br />
-              <div class="table-responsive" style="overflow-y: scroll">
-                <table class="table">
+      <!-- Gestion des membres -->
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <nz-card>
+              <div nz-title>
+                <h2>Gestion des membres</h2>
+              </div>
+              <div nz-body>
+                <button nz-button nzType="primary" (click)="openModalU()">Ajouter</button>
+                <nz-table [nzData]="users">
                   <thead>
                     <tr>
                       <th>Nom & Prénoms</th>
@@ -359,37 +308,26 @@
                       </td>
                     </tr>
                   </tbody>
-                </table>
+                </nz-table>
               </div>
-            </div>
+            </nz-card>
           </div>
         </div>
       </div>
-    </div>
-    <br />
+      <br><br>
 
-    <!-- Gestion des Fichiers. Importations Affichage-->
-
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="card">
-            <div class="card-body">
-              <h2
-                class="card-title"
-                style="display: inline; margin-right: 235px"
-              >
-                Gestion des fichiers
-              </h2>
-              <input type="file" (change)="onFileSelected($event)" />
-              <button class="btn btn-success" (click)="uploadFile()">
-                Importer un fichier
-              </button>
-
-              <br />
-
-              <div class="table-responsive" style="overflow-y: scroll">
-                <table class="table">
+      <!-- Gestion des fichiers -->
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <nz-card>
+              <div nz-title>
+                <h2>Gestion des fichiers</h2>
+              </div>
+              <div nz-body>
+                <input type="file" (change)="onFileSelected($event)" />
+                <button nz-button nzType="primary" (click)="uploadFile()">Importer un fichier</button>
+                <nz-table [nzData]="fichiersImportes">
                   <thead>
                     <tr>
                       <th>lien du fichier</th>
@@ -400,13 +338,8 @@
                   <tbody>
                     <tr *ngFor="let fichier of fichiersImportes">
                       <td>
-                        <a
-                          href="http://localhost:8000{{ fichier.lien }}"
-                          target="_blank"
-                          >Voir le fichier</a
-                        >
+                        <a href="http://localhost:8000{{ fichier.lien }}" target="_blank">Voir le fichier</a>
                       </td>
-
                       <td>{{ fichier.dateImportation }}</td>
                       <td>
                         <div class="dropdown">
@@ -438,12 +371,12 @@
                       </td>
                     </tr>
                   </tbody>
-                </table>
+                </nz-table>
               </div>
-            </div>
+            </nz-card>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

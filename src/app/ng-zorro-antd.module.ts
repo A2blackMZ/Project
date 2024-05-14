@@ -2,11 +2,13 @@
 import { NgModule } from '@angular/core';
 
 import { NzAffixModule } from 'ng-zorro-antd/affix';
+//import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzAnchorModule } from 'ng-zorro-antd/anchor';
 import { NzAutocompleteModule } from 'ng-zorro-antd/auto-complete';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzBackTopModule } from 'ng-zorro-antd/back-top';
+import { CommonModule } from '@angular/common';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -80,6 +82,7 @@ import { NzWaterMarkModule } from 'ng-zorro-antd/water-mark';
 @NgModule({
   exports: [
     NzAffixModule,
+    NzMenuModule,
     NzAlertModule,
     NzAnchorModule,
     NzAutocompleteModule,
@@ -90,6 +93,7 @@ import { NzWaterMarkModule } from 'ng-zorro-antd/water-mark';
     NzBreadCrumbModule,
     NzCalendarModule,
     NzCardModule,
+    NzDropDownModule,
     NzCarouselModule,
     NzCascaderModule,
     NzCheckboxModule,
@@ -100,7 +104,9 @@ import { NzWaterMarkModule } from 'ng-zorro-antd/water-mark';
     NzDescriptionsModule,
     NzDividerModule,
     NzDrawerModule,
-    NzDropDownModule,
+    NzSelectModule,
+    CommonModule,
+
     NzEmptyModule,
     NzFormModule,
     NzGridModule,
@@ -120,6 +126,7 @@ import { NzWaterMarkModule } from 'ng-zorro-antd/water-mark';
     NzPageHeaderModule,
     NzPaginationModule,
     NzPopconfirmModule,
+
     NzPopoverModule,
     NzProgressModule,
     NzRadioModule,
@@ -153,7 +160,7 @@ import { NzWaterMarkModule } from 'ng-zorro-antd/water-mark';
     // NzCodeEditorModule,
     // NzGraphModule,
     NzQRCodeModule,
-    NzWaterMarkModule
+    NzWaterMarkModule,
   ]
 })
 export class DemoNgZorroAntdModule {

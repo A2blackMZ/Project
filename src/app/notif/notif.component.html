@@ -1,31 +1,38 @@
-<div *ngIf="loading" class="loading-container">
-  <img src="/assets/loading.gif" alt="Chargement en cours..." />
-</div>
+<nz-spin *ngIf="loading" nzSimple></nz-spin>
 
-<app-topnavbar></app-topnavbar>
-<div class="row">
-  <div class="col-md-3">
-    <app-leftnavbar></app-leftnavbar>
-  </div>
+
+  <nz-layout>
+    <app-topnavbar></app-topnavbar>
+    <nz-layout nzHasSider>
+      
+      <nz-sider nzWidth="280px">
+        <app-leftnavbar></app-leftnavbar>
+      </nz-sider>
+
+  
+
   <div class="col-md-9">
     <h2>Notifications</h2>
+
     <div class="container">
       <div class="row">
         <div class="col-lg-4">
-          <div class="card card-margin">
-            <div *ngIf="notifications.length > 0">
-              <ul>
-                <li *ngFor="let notification of notifications">
-                  <div>
+          <nz-card class="card-margin">
+            <ng-container *ngIf="notifications.length > 0; else noNotifications">
+              <nz-list [nzDataSource]="notifications" [nzRenderItem]="notification">
+                <ng-template #notification let-notification>
+                  <nz-list-item>
                     <h3>Vous aviez initiez un compte rendu pour le {{ notification.data.date }}</h3>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div *ngIf="notifications.length === 0">
+                  </nz-list-item>
+                </ng-template>
+              </nz-list>
+            </ng-container>
+            <ng-template #noNotifications>
               <h2><p>Aucune notification à afficher pour le moment.</p></h2>
-            </div>
+            </ng-template>
+          </nz-card>
         </div>
       </div>
     </div>
   </div>
+</nz-layout>

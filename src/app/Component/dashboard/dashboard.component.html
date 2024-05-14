@@ -16,17 +16,20 @@
     rel="stylesheet"
   />
 </head>
-<body>
-  <app-topnavbar></app-topnavbar>
-  <div class="row">
-    <div class="col-md-3">
-      <app-leftnavbar></app-leftnavbar>
-    </div>
+<nz-layout>
+
+    
+    
+          <app-topnavbar></app-topnavbar>
+          <nz-layout nzHasSider>
+            
+            <nz-sider nzWidth="280px">
+              <app-leftnavbar></app-leftnavbar>
+            </nz-sider>
     <div class="col-md-9">
       <app-dashboard-overview></app-dashboard-overview>
       <app-graph></app-graph>
     </div>
-  </div>
 
   <script src="assets/plugins/bower_components/jquery/dist/jquery.min.js"></script>
   <!-- Bootstrap tether Core JavaScript -->
@@ -44,4 +47,4 @@
   <script src="assets/plugins/bower_components/chartist/dist/chartist.min.js"></script>
   <script src="assets/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
   <!-- <script src="js/pages/dashboards/dashboard1.js"></script> -->
-</body>
+</nz-layout>

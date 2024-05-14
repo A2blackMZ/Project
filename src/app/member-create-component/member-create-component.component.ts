@@ -6,7 +6,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
+import { NzSelectModule } from 'ng-zorro-antd/select';
 import { DataService } from '../services/data.service';
+import { NzFormModule } from 'ng-zorro-antd/form';
 
 interface UserData {
   name: string;
@@ -25,7 +27,9 @@ interface UserData {
     ReactiveFormsModule,
     MatDialogModule,
     MatSelectModule,
-    MatOptionModule
+    MatOptionModule,
+    NzSelectModule,
+    NzFormModule
   ],
   templateUrl: './member-create-component.component.html',
   styleUrl: './member-create-component.component.css'

@@ -1,40 +1,27 @@
-<head>
-  <link
-    href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,700"
-    rel="stylesheet"
-    type="text/css"
-  />
-</head>
-<body>
+<nz-layout>
   <div *ngIf="loading" class="loading-container">
-    <img src="/assets/loading.gif" alt="Chargement en cours..." />
+    <img src="/assets/loading.gif" alt="Chargement en cours...">
   </div>
 
-  <app-topnavbar></app-topnavbar>
-  <div class="row">
-    <div class="col-md-3">
-      <app-leftnavbar></app-leftnavbar>
-    </div>
-    <div class="col-md-9">
+      <app-topnavbar></app-topnavbar>
+      <nz-layout nzHasSider>
+        
+        <nz-sider nzWidth="280px">
+          <app-leftnavbar></app-leftnavbar>
+        </nz-sider>
+
+
+    <div nz-col nzXs="24" nzSm="24" nzMd="18" nzLg="18" nzXl="18">
       <section class="ftco-section">
         <div class="container">
           <div class="row">
             <div class="col-md-12">
               <div style="margin: 15px">
-                <h2 style="display: inline; margin-right: 515px">
-                  Liste des Séances de Supervision
-                </h2>
-                <a
-                  class="btn btn-success"
-                  style="padding: 5px; color: white"
-                  routerLink="/seance/new"
-                  >Nouvelle Séance</a
-                >
+                <h2 style="display: inline; margin-right: 515px">Liste des Séances de Supervision</h2>
+                <a nz-button nzType="primary" style="padding: 5px; color: white" routerLink="/seance/new">Nouvelle Séance</a>
               </div>
               <div class="table-wrap">
-                <!-- seances-list.component.html -->
-
-                <table class="table table-striped">
+                <nz-table [nzData]="seances">
                   <thead>
                     <tr>
                       <th>Référence</th>
@@ -52,30 +39,10 @@
                       <td>{{ seance.date_creation }}</td>
                       <td>{{ seance.nom_chef_projet }}</td>
                       <td>
-                        <span
-          [ngClass]="{
-            'badge badge-success': seance.statut === 'valide',
-            'badge badge-danger': seance.statut === 'non_valide'
-          }"
-          (mouseover)="seance['showMessage'] = true"
-          (mouseout)="seance['showMessage'] = false"
-        >
-          {{ seance.statut }}
-            </span>
-              <!-- Affichage du message lorsque la souris passe sur le champ "valide" -->
-              <div *ngIf="seance['showMessage']">
-                <!-- Affichage du message "Ce statut est valide" -->
-                <ng-container class="Valid" *ngIf="seance.statut === 'valide'; else nonValideMessage">
-                  Ce statut est valide.
-                </ng-container>
-
-                <!-- Affichage du message "Ce statut n'est pas valide" -->
-                <ng-template class="nonValid" #nonValideMessage>
-                  Ce statut n'est pas valide.
-                </ng-template>
-
-              </div>
-            </td>
+                        <nz-tag [nzColor]="seance.statut === 'valide' ? 'success' : 'error'">
+                          {{ seance.statut }}
+                        </nz-tag>
+                      </td>
                       <td>
                         <div class="dropdown">
                           <a
@@ -120,12 +87,11 @@
                       </td>
                     </tr>
                   </tbody>
-                </table>
+                </nz-table>
               </div>
             </div>
           </div>
         </div>
       </section>
     </div>
-  </div>
-</body>
+  </nz-layout>

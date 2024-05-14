@@ -40,6 +40,21 @@ interface Fichier {
   styleUrls: ['./project-details.component.css'],
 })
 export class ProjectDetailsComponent {
+  getBadgeStatus(etat: string): string {
+    switch (etat) {
+      case 'Enregistré':
+        return 'processing';
+      case 'En cours':
+        return 'warning';
+      case 'Terminé':
+        return 'success';
+      case 'Annulé':
+        return 'error';
+      default:
+        return '';
+    }
+  }
+  
   userId!: number;
   projectId!: number;
   project: any; // Remplacez 'any' par le type de votre projet si possible

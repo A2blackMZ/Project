@@ -11,6 +11,7 @@ import { NgChartsModule } from 'ng2-charts' ;
 import { EditorModule, TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
+import { NzMenuModule } from 'ng-zorro-antd/menu';
 
 
 
@@ -32,7 +33,7 @@ import { registerLocaleData } from '@angular/common';
 import fr from '@angular/common/locales/fr';
 import { IconsProviderModule } from './icons-provider.module';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
-import { NzMenuModule } from 'ng-zorro-antd/menu';
+//import { NzMenuModule } from 'ng-zorro-antd/menu';
 registerLocaleData(fr);
 
 import { DemoNgZorroAntdModule } from './ng-zorro-antd.module';
@@ -93,6 +94,7 @@ const appRoute: Routes = [{
     NotifComponent,
   ],
   imports: [
+    DemoNgZorroAntdModule,
     MatPaginatorModule,
     MatDialogModule,
     DemoNgZorroAntdModule,

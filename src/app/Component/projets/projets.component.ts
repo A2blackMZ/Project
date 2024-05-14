@@ -13,6 +13,7 @@ import { ProjectFormComponent } from 'src/app/Component/project-form/project-for
 })
 export class ProjetsComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  //@ViewChild(MatPaginator) paginator: MatPaginator;
 
   donne = Array.from({ length: 100 }, (_, index) => `Item ${index + 1}`);
 
@@ -23,6 +24,22 @@ export class ProjetsComponent {
   userId!: number;
   pageSize = 5;
   pageSizeOptions: number[] = [5, 10, 25];
+
+
+  pageIndex = 1;
+  //pageSize = 10;
+  //pageSizeOptions = [5, 10, 25];
+  total = this.displayedProjects.length; // Calculez le nombre total de projets
+
+  onPageIndexChange(pageIndex: number): void {
+    this.pageIndex = pageIndex;
+    // Logique pour récupérer les projets de la nouvelle page
+  }
+
+  onPageSizeChange(pageSize: number): void {
+    this.pageSize = pageSize;
+    // Logique pour récupérer les projets avec la nouvelle taille de page
+  }
 
   constructor(private dialog: MatDialog,private route: ActivatedRoute,private dataService: DataService, private modalService: ModalService) {
 

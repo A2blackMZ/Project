@@ -10,9 +10,22 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./project-info.component.css']
 })
 export class ProjectInfoComponent{
+
+  date_debut!: Date;
+  date_fin_prevue!: Date;
+  // Méthode pour afficher le modal
+  showModal(): void {
+    this.isVisible = true;
+  }
+
+  // Méthode pour cacher le modal lors de l'annulation
+  handleCancel(): void {
+    this.isVisible = false;
+  }
   projectId!: number; // Récupérez l'ID du projet à partir de la route
   projet: any = {}; // Définissez votre modèle de données de projet
   form!: FormGroup; 
+  isVisible = false;
   constructor(@Inject(MAT_DIALOG_DATA) public data: { projet: any },private fb: FormBuilder, private route: ActivatedRoute, private dataService: DataService,  private dialogRef: MatDialogRef<ProjectInfoComponent>) {
     if (data.projet) {
       // Remplissez le modèle du formulaire avec les informations du projet
@@ -54,6 +67,7 @@ export class ProjectInfoComponent{
         console.error('Erreur lors de la mise à jour du projet', error);
       }
     );
+    this.isVisible = false;
   }
   
 }
