@@ -46,4 +46,22 @@ createProject(): void {
     });
   });
   }
+
+  onDateDChange(date: Date): void {
+    if (date) {
+      const formattedDate = date.toISOString().slice(0, 10); // Exemple : "2015-02-15"
+      this.newProject.date_debut = formattedDate;
+    } else {
+      this.newProject.date_debut = null;
+    }
+  }
+
+  onDateFChange(date: Date): void {
+    if (date) {
+      const formattedDate = date.toISOString().slice(0, 10); // Exemple : "2015-02-15"
+      this.newProject.date_fin_prevue = formattedDate;
+    } else {
+      this.newProject.date_fin_prevue = null;
+    }
+  }
 }

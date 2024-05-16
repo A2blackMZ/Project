@@ -37,3 +37,10 @@
 .navbar-nav .nav-item:last-child .nav-link {
   margin-right: 0; /* Supprimer la marge de droite pour le dernier élément de navigation */
 }
+
+
+
+.nz-menu-dark {
+  background-color: rgb(37, 54, 129);
+}
+

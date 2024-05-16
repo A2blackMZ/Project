@@ -1,11 +1,10 @@
-<div *ngIf="loading" class="loading-container">
-  <img src="/assets/loading.gif" alt="Chargement en cours..." />
-</div>
-<app-topnavbar></app-topnavbar>
-<div class="row">
-  <div class="col-md-3">
-    <app-leftnavbar></app-leftnavbar>
-  </div>
+<nz-layout>
+  <app-topnavbar></app-topnavbar>
+  <nz-layout nzHasSider>
+    
+    <nz-sider nzWidth="280px">
+      <app-leftnavbar></app-leftnavbar>
+    </nz-sider>
   <div class="col-md-9">
     <ul class="nav nav-tabs">
       <li class="nav-item" *ngFor="let projet of projetsSelectionnes">
@@ -98,4 +97,4 @@
       </div>
     </ng-container>
   </div>
-</div>
+<nz-layout>

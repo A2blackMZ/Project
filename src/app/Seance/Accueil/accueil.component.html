@@ -1,15 +1,11 @@
 <nz-layout>
-  <div *ngIf="loading" class="loading-container">
-    <img src="/assets/loading.gif" alt="Chargement en cours...">
-  </div>
 
-      <app-topnavbar></app-topnavbar>
-      <nz-layout nzHasSider>
-        
-        <nz-sider nzWidth="280px">
-          <app-leftnavbar></app-leftnavbar>
-        </nz-sider>
-
+  <app-topnavbar></app-topnavbar>
+  <nz-layout nzHasSider>
+    
+    <nz-sider nzWidth="280px">
+      <app-leftnavbar></app-leftnavbar>
+    </nz-sider>
 
     <div nz-col nzXs="24" nzSm="24" nzMd="18" nzLg="18" nzXl="18">
       <section class="ftco-section">
@@ -39,9 +35,9 @@
                       <td>{{ seance.date_creation }}</td>
                       <td>{{ seance.nom_chef_projet }}</td>
                       <td>
-                        <nz-tag [nzColor]="seance.statut === 'valide' ? 'success' : 'error'">
+                        <span nz-tooltip nzTooltipTitle=" {{getTitleTooltip(seance.statut)}}"><nz-tag [nzColor]="seance.statut === 'valide' ? 'success' : 'error'">
                           {{ seance.statut }}
-                        </nz-tag>
+                          </nz-tag> </span>
                       </td>
                       <td>
                         <div class="dropdown">

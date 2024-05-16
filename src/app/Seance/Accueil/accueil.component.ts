@@ -73,6 +73,14 @@ export class AccueilComponent implements OnInit {
     );
   }
 
+  getTitleTooltip(statut: string): string {
+    if (statut === 'valide') {
+      return 'Les comptes rendus de cette séance ont été lus et validés par le chef projet.';
+    } else {
+      return 'Les comptes rendus de cette séance n\'ont pas encore été lus et validés par le chef projet.';
+    }
+  }
+
 
   
 

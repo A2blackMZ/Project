@@ -1,6 +1,6 @@
-<aside nz-layout="inline" style="height: 100vh">
+<aside nz-layout="inline" style="height: 100vh" class="nz-menu-dark">
   <nz-sider nzCollapsible [nzWidth]="80" nzWidth="100px">
-    <ul nz-menu nzMode="inline" nzTheme="dark">
+    <ul nz-menu nzMode="inline" class="nz-menu-dark">
       <li nz-menu-item *ngIf="userRole === 'admin' || userRole === 'manager' || userRole === 'user'" routerLink="/dashboard">
         <i nz-icon nzType="clock-circle" nzTheme="outline"></i>
         <span>Dashboard</span>
@@ -32,20 +32,6 @@
       <li nz-menu-item href="404.html">
         <i nz-icon nzType="info-circle" nzTheme="outline"></i>
         <span>Error 404</span>
-      </li>
-      <li >
-        <p>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          
-        </p>
       </li>
     </ul>
   </nz-sider>
