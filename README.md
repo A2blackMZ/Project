@@ -39,3 +39,43 @@ Une fois les modifications apportées, cliquez sur "Mettre à jour" pour enregis
 
 ![Modification du profil BEU](https://cdn.statically.io/img/user-images.githubusercontent.com/82185047/232828463-3c52f83c-1762-4151-9e04-7c9a69aa2c74.png)
 
+
+
+## Liste des dockers et tâcherons
+
+Cette section permet de consulter et rechercher la liste complète des dockers et tâcherons enregistrés dans le système.
+
+![Liste des dockers et tâcherons](https://cdn.statically.io/img/user-images.githubusercontent.com/82185047/232829919-b9ec3ef7-b9f4-4c4c-ab75-98f8ba688f94.png)
+
+### Filtres de recherche
+
+Plusieurs filtres sont disponibles pour faciliter la recherche de dockers ou tâcherons spécifiques : Cliquer sur le bouton "Cliquez ici pour faire une recherche avancée" pour rechercher.
+
+- **Badge** : Rechercher par le numéro de badge.
+- **Matricule** : Rechercher par le matricule.
+- **Numéro d'appel** : Rechercher par le numéro d'appel.
+- **Nom** : Rechercher par le nom.
+- **Prénoms** : Rechercher par les prénoms.
+- **Téléphone** : Rechercher par le numéro de téléphone.
+- **Fonction** : Rechercher par la fonction occupée.
+
+### Résultats
+
+La liste affiche les informations suivantes pour chaque docker ou tâcheron :
+
+- **Badge** : Le numéro de badge attribué.
+- **Nom** : Le nom de famille.
+- **Prénoms** : Les prénoms.
+- **Statut** : Le statut actuel (libre ou occupé).
+- **Matricule** : Le matricule d'identification.
+- **Téléphone** : Le numéro de téléphone.
+- **Fonction** : La fonction occupée.
+- **Action** : Un bouton d'action permettant d'accéder aux détails ou de modifier les informations.
+
+### Actions
+
+- Cliquer sur le bouton au niveau du champ actions vous redirigera vers une page avec un formulaire vous permettant de mettre à jour le docker ou le tacheron.
+  ![MOdification d'un docker ou tâcheron](https://cdn.statically.io/img/user-images.githubusercontent.com/82185047/232829919-b9ec3ef7-b9f4-4c4c-ab75-98f8ba688f94.png)
+
+  
+- Par contre , cliquer sur le bouton de suppression supprimera le docker ou le tacheron.
