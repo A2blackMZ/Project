@@ -1,6 +1,6 @@
 # Bureau d'Embauche Unique (BEU) - Documentation
 
-### Page de connexion
+## Page de connexion
 
 La page de connexion vous permet d'accéder à votre compte BEU en entrant vos identifiants. Voici les éléments clés de cette page :
 
