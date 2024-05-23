@@ -1,27 +1,16 @@
-# Projet
+# Bureau d'Embauche Unique (BEU) - Documentation
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.7.
+## Page de connexion
 
-## Development server
+La page de connexion vous permet d'accéder à votre compte BEU en entrant vos identifiants. Voici les éléments clés de cette page :
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+![Page de connexion BEU](https://cdn.statically.io/img/user-images.githubusercontent.com/82185047/232827406-f51d8516-d92b-4f21-9a7d-8daf05db713e.png)
 
-## Code scaffolding
+1. **Logo BEU**: Le logo de l'application Bureau d'Embauche Unique.
+2. **Champ d'identifiant**: Entrez votre identifiant (pcamoussou dans l'exemple).
+3. **Champ de mot de passe**: Entrez votre mot de passe.
+4. **Lien "Mot de passe oublié ?"**: Cliquez sur ce lien si vous avez oublié votre mot de passe.
+5. **Bouton "Se Connecter"**: Cliquez sur ce bouton une fois vos identifiants entrés pour vous connecter.
+6. **Image promotionnelle**: Une image attrayante montrant une vue aérienne d'une ville côtière.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Une fois connecté, vous pourrez accéder aux différentes fonctionnalités de l'application BEU.
