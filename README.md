@@ -6,15 +6,16 @@ Cette section permet de consulter et rechercher la liste complète des demandes 
 
 ### Filtres de recherche
 
-Plusieurs filtres sont disponibles pour faciliter la recherche de dockers ou tâcherons spécifiques : Cliquer sur le bouton "Cliquez ici pour faire une recherche avancée" pour rechercher.
+Plusieurs filtres sont disponibles pour faciliter la recherche de demandes de dockers spécifiques : Cliquer sur le bouton "Cliquez ici pour faire une recherche avancée" pour rechercher.
 
-- **Badge** : Rechercher par le numéro de badge.
-- **Matricule** : Rechercher par le matricule.
-- **Numéro d'appel** : Rechercher par le numéro d'appel.
-- **Nom** : Rechercher par le nom.
-- **Prénoms** : Rechercher par les prénoms.
-- **Téléphone** : Rechercher par le numéro de téléphone.
-- **Fonction** : Rechercher par la fonction occupée.
+- **Références** : Rechercher par le numéro de demande.
+- **Société** : Rechercher par le nom de la société.
+- **Navire** : Rechercher par le nom du navire.
+- **Chantier** : Rechercher par le nom du chantier.
+- **Opération** : Rechercher par le type d'opération.
+- **Début période** : Rechercher par la date de début.
+- **Fin période** : Rechercher par la date de fin.
+- **Statut** : Rechercher par le statut de la demande.
 
 ### Résultats
 
