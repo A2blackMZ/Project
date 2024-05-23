@@ -299,153 +299,157 @@ La liste des jours fériés trouvés s'affichera dans le tableau.
 ## Type de jour
 
 La page de liste des jours affiche tous les types de jours existants dans le système dans un tableau. Chaque ligne du tableau contient les informations suivantes :
-- Code OMI
-- Nom du navire
+- Code 
+- Type de jour
+- Date de création
 - Actions (Modifier, Supprimer)
 
-![Liste des navires](https://path/to/screenshot1.png)
+![Liste des jours](https://path/to/screenshot1.png)
 
-### Modification d'un navire
-Pour modifier un navire:
-1. Cliquez sur le bouton de modification (icône de crayon) situé dans la colonne "Actions" de la ligne correspondant au navire que vous souhaitez modifier.
+### Modification d'un jour
+Pour modifier un jour:
+1. Cliquez sur le bouton de modification (icône de crayon) situé dans la colonne "Actions" de la ligne correspondant au jour que vous souhaitez modifier.
 2. Vous serez redirigé vers une page de modification.
 3. Modifiez les informations souhaitées et cliquez sur le bouton "Mettre à jour" pour sauvegarder les modifications.
 
-![Modification d'un navire](https://path/to/screenshot2.png)
+![Modification d'un jour](https://path/to/screenshot2.png)
 
-### Suppression d'un navires
-Pour supprimer un navire :
+### Suppression d'un jour
+Pour supprimer un jour :
 1. Cliquez sur le bouton de suppression (icône de poubelle) situé dans la colonne "Actions" de la ligne correspondant au navire que vous souhaitez supprimer.
 2. Une confirmation peut être demandée.
-3. Le navire sera supprimé de la liste.
+3. Le jour sera supprimé de la liste.
 
 
-### Ajouter un navire
-Pour ajouter un nouveau navire , cliquez sur le bouton d'ajout "Ajouter un navire" en haut à gauche. Cela vous redirigera vers une page ou vous remplirerez le formulaire d'ajout et cliquerez sur le bouton "Enregistrer"
+### Ajouter un jour
+Pour ajouter un nouveau jour , cliquez sur le bouton d'ajout "Ajouter" en haut à gauche. Cela vous redirigera vers une page ou vous remplirerez le formulaire d'ajout et cliquerez sur le bouton "Enregistrer"
 
-![Ajout d'un navire](https://path/to/screenshot2.png)
+![Ajout d'un jour](https://path/to/screenshot2.png)
 
 
-### Rechercher un navire
-Pour rechercher un navire , entrez dans le formulaire de recherche le nom ou le code OMI du navire. Cliquez ensuite sur le bouton de recherche. 
-La liste des navires trouvés s'affichera dans le tableau.
+### Rechercher un jour
+Pour rechercher un jour , entrez dans le formulaire de recherche la date ou le autre information du jour. Cliquez ensuite sur le bouton de recherche. 
+La liste des jours trouvés s'affichera dans le tableau.
 
-![recherche d'un navire](https://path/to/screenshot2.png)
+![recherche d'un jour](https://path/to/screenshot2.png)
 
 
 
 ## Type d'opération
 
-La page de liste des navires affiche tous les navires existantes dans le système dans un tableau. Chaque ligne du tableau contient les informations suivantes :
-- Code OMI
-- Nom du navire
+La page de liste des types opérations affiche tous les opérations existantes dans le système dans un tableau. Chaque ligne du tableau contient les informations suivantes :
+- Code
+- Type d'opération
+- Date de création
 - Actions (Modifier, Supprimer)
 
-![Liste des navires](https://path/to/screenshot1.png)
+![Liste des opérations](https://path/to/screenshot1.png)
 
-### Modification d'un navire
-Pour modifier un navire:
-1. Cliquez sur le bouton de modification (icône de crayon) situé dans la colonne "Actions" de la ligne correspondant au navire que vous souhaitez modifier.
+### Modification d'un opération
+Pour modifier un opération:
+1. Cliquez sur le bouton de modification (icône de crayon) situé dans la colonne "Actions" de la ligne correspondant à l'opération que vous souhaitez modifier.
 2. Vous serez redirigé vers une page de modification.
 3. Modifiez les informations souhaitées et cliquez sur le bouton "Mettre à jour" pour sauvegarder les modifications.
 
-![Modification d'un navire](https://path/to/screenshot2.png)
+![Modification d'uns opération](https://path/to/screenshot2.png)
 
-### Suppression d'un navires
+### Suppression d'une opération
 Pour supprimer un navire :
-1. Cliquez sur le bouton de suppression (icône de poubelle) situé dans la colonne "Actions" de la ligne correspondant au navire que vous souhaitez supprimer.
+1. Cliquez sur le bouton de suppression (icône de poubelle) situé dans la colonne "Actions" de la ligne correspondant à l'opération que vous souhaitez supprimer.
 2. Une confirmation peut être demandée.
-3. Le navire sera supprimé de la liste.
+3. L'opération sera supprimé de la liste.
 
 
-### Ajouter un navire
-Pour ajouter un nouveau navire , cliquez sur le bouton d'ajout "Ajouter un navire" en haut à gauche. Cela vous redirigera vers une page ou vous remplirerez le formulaire d'ajout et cliquerez sur le bouton "Enregistrer"
+### Ajouter une opération
+Pour ajouter une nouvelle opération , cliquez sur le bouton d'ajout "Ajouter" en haut à gauche. Cela vous redirigera vers une page ou vous remplirerez le formulaire d'ajout et cliquerez sur le bouton "Enregistrer"
 
-![Ajout d'un navire](https://path/to/screenshot2.png)
+![Ajout d'une opération](https://path/to/screenshot2.png)
 
 
-### Rechercher un navire
-Pour rechercher un navire , entrez dans le formulaire de recherche le nom ou le code OMI du navire. Cliquez ensuite sur le bouton de recherche. 
-La liste des navires trouvés s'affichera dans le tableau.
+### Rechercher une opération
+Pour rechercher un navire , entrez dans le formulaire de recherche le code ou autre information de l'opération. Cliquez ensuite sur le bouton de recherche. 
+La liste des opérations trouvées s'affichera dans le tableau.
 
-![recherche d'un navire](https://path/to/screenshot2.png)
+![recherche d'une opération](https://path/to/screenshot2.png)
 
 
 
 ## Chantier
 
-La page de liste des navires affiche tous les navires existantes dans le système dans un tableau. Chaque ligne du tableau contient les informations suivantes :
-- Code OMI
-- Nom du navire
+La page de liste des chantiers affiche tous les chantiers existantes dans le système dans un tableau. Chaque ligne du tableau contient les informations suivantes :
+- Code 
+- chantier
+- Date de création
 - Actions (Modifier, Supprimer)
 
-![Liste des navires](https://path/to/screenshot1.png)
+![Liste des chantiers](https://path/to/screenshot1.png)
 
-### Modification d'un navire
-Pour modifier un navire:
-1. Cliquez sur le bouton de modification (icône de crayon) situé dans la colonne "Actions" de la ligne correspondant au navire que vous souhaitez modifier.
+### Modification d'un chantier
+Pour modifier un chantier:
+1. Cliquez sur le bouton de modification (icône de crayon) situé dans la colonne "Actions" de la ligne correspondant au chantier que vous souhaitez modifier.
 2. Vous serez redirigé vers une page de modification.
 3. Modifiez les informations souhaitées et cliquez sur le bouton "Mettre à jour" pour sauvegarder les modifications.
 
-![Modification d'un navire](https://path/to/screenshot2.png)
+![Modification d'un chantier](https://path/to/screenshot2.png)
 
-### Suppression d'un navires
-Pour supprimer un navire :
-1. Cliquez sur le bouton de suppression (icône de poubelle) situé dans la colonne "Actions" de la ligne correspondant au navire que vous souhaitez supprimer.
+### Suppression d'un chantier
+Pour supprimer un chantier :
+1. Cliquez sur le bouton de suppression (icône de poubelle) situé dans la colonne "Actions" de la ligne correspondant au chantier que vous souhaitez supprimer.
 2. Une confirmation peut être demandée.
-3. Le navire sera supprimé de la liste.
+3. Le chantier sera supprimé de la liste.
 
 
-### Ajouter un navire
-Pour ajouter un nouveau navire , cliquez sur le bouton d'ajout "Ajouter un navire" en haut à gauche. Cela vous redirigera vers une page ou vous remplirerez le formulaire d'ajout et cliquerez sur le bouton "Enregistrer"
+### Ajouter un chantier
+Pour ajouter un nouveau chantier , cliquez sur le bouton d'ajout "Ajouter" en haut à gauche. Cela vous redirigera vers une page ou vous remplirerez le formulaire d'ajout et cliquerez sur le bouton "Enregistrer"
 
-![Ajout d'un navire](https://path/to/screenshot2.png)
+![Ajout d'un chantier](https://path/to/screenshot2.png)
 
 
-### Rechercher un navire
-Pour rechercher un navire , entrez dans le formulaire de recherche le nom ou le code OMI du navire. Cliquez ensuite sur le bouton de recherche. 
-La liste des navires trouvés s'affichera dans le tableau.
+### Rechercher un chantier
+Pour rechercher un chantier , entrez dans le formulaire de recherche le nom ou le code du chantier. Cliquez ensuite sur le bouton de recherche. 
+La liste des chantiers trouvés s'affichera dans le tableau.
 
-![recherche d'un navire](https://path/to/screenshot2.png)
+![recherche d'un chantier](https://path/to/screenshot2.png)
 
 
 
 
 ## Fonction travailleur
 
-La page de liste des navires affiche tous les navires existantes dans le système dans un tableau. Chaque ligne du tableau contient les informations suivantes :
-- Code OMI
-- Nom du navire
+La page de liste des fonctions des travailleurs affiche tous les fonctions des travailleurs existantes dans le système dans un tableau. Chaque ligne du tableau contient les informations suivantes :
+- Code
+- Foncion docker
+- date de création
 - Actions (Modifier, Supprimer)
 
-![Liste des navires](https://path/to/screenshot1.png)
+![Liste des fonctions des travailleurs](https://path/to/screenshot1.png)
 
-### Modification d'un navire
-Pour modifier un navire:
-1. Cliquez sur le bouton de modification (icône de crayon) situé dans la colonne "Actions" de la ligne correspondant au navire que vous souhaitez modifier.
+### Modification d'une fonction des travailleurs
+Pour modifier une fonction:
+1. Cliquez sur le bouton de modification (icône de crayon) situé dans la colonne "Actions" de la ligne correspondant à la fonction que vous souhaitez modifier.
 2. Vous serez redirigé vers une page de modification.
 3. Modifiez les informations souhaitées et cliquez sur le bouton "Mettre à jour" pour sauvegarder les modifications.
 
-![Modification d'un navire](https://path/to/screenshot2.png)
+![Modification d'une fonction](https://path/to/screenshot2.png)
 
-### Suppression d'un navires
-Pour supprimer un navire :
-1. Cliquez sur le bouton de suppression (icône de poubelle) situé dans la colonne "Actions" de la ligne correspondant au navire que vous souhaitez supprimer.
+### Suppression d'une fonction
+Pour supprimer une fonction :
+1. Cliquez sur le bouton de suppression (icône de poubelle) situé dans la colonne "Actions" de la ligne correspondant à la fonction que vous souhaitez supprimer.
 2. Une confirmation peut être demandée.
-3. Le navire sera supprimé de la liste.
+3. La fonction sera supprimé de la liste.
 
 
-### Ajouter un navire
-Pour ajouter un nouveau navire , cliquez sur le bouton d'ajout "Ajouter un navire" en haut à gauche. Cela vous redirigera vers une page ou vous remplirerez le formulaire d'ajout et cliquerez sur le bouton "Enregistrer"
+### Ajouter une fonction
+Pour ajouter une nouvelle fonction , cliquez sur le bouton d'ajout "Ajouter" en haut à gauche. Cela vous redirigera vers une page ou vous remplirerez le formulaire d'ajout et cliquerez sur le bouton "Enregistrer"
 
-![Ajout d'un navire](https://path/to/screenshot2.png)
+![Ajout d'une fonction](https://path/to/screenshot2.png)
 
 
-### Rechercher un navire
-Pour rechercher un navire , entrez dans le formulaire de recherche le nom ou le code OMI du navire. Cliquez ensuite sur le bouton de recherche. 
-La liste des navires trouvés s'affichera dans le tableau.
+### Rechercher une fonction
+Pour rechercher un navire , entrez dans le formulaire de recherche la fonction ou le code de la fonction. Cliquez ensuite sur le bouton de recherche. 
+La liste des fonctions trouvéss s'affichera dans le tableau.
 
-![recherche d'un navire](https://path/to/screenshot2.png)
+![recherche d'une fonction](https://path/to/screenshot2.png)
 
 
 
@@ -453,37 +457,37 @@ La liste des navires trouvés s'affichera dans le tableau.
 ## Structure utilisateur
 
 La page de liste des navires affiche tous les navires existantes dans le système dans un tableau. Chaque ligne du tableau contient les informations suivantes :
-- Code OMI
-- Nom du navire
+- Nom de la structure
+- adresse
 - Actions (Modifier, Supprimer)
 
-![Liste des navires](https://path/to/screenshot1.png)
+![Liste des structures des utilisateurs](https://path/to/screenshot1.png)
 
-### Modification d'un navire
-Pour modifier un navire:
-1. Cliquez sur le bouton de modification (icône de crayon) situé dans la colonne "Actions" de la ligne correspondant au navire que vous souhaitez modifier.
+### Modification d'une structure
+Pour modifier une structure:
+1. Cliquez sur le bouton de modification (icône de crayon) situé dans la colonne "Actions" de la ligne correspondant a la structure que vous souhaitez modifier.
 2. Vous serez redirigé vers une page de modification.
 3. Modifiez les informations souhaitées et cliquez sur le bouton "Mettre à jour" pour sauvegarder les modifications.
 
-![Modification d'un navire](https://path/to/screenshot2.png)
+![Modification d'une structure](https://path/to/screenshot2.png)
 
-### Suppression d'un navires
+### Suppression d'une structure
 Pour supprimer un navire :
-1. Cliquez sur le bouton de suppression (icône de poubelle) situé dans la colonne "Actions" de la ligne correspondant au navire que vous souhaitez supprimer.
+1. Cliquez sur le bouton de suppression (icône de poubelle) situé dans la colonne "Actions" de la ligne correspondant a la structure que vous souhaitez supprimer.
 2. Une confirmation peut être demandée.
-3. Le navire sera supprimé de la liste.
+3. La structure sera supprimé de la liste.
 
 
-### Ajouter un navire
-Pour ajouter un nouveau navire , cliquez sur le bouton d'ajout "Ajouter un navire" en haut à gauche. Cela vous redirigera vers une page ou vous remplirerez le formulaire d'ajout et cliquerez sur le bouton "Enregistrer"
+### Ajouter une structure
+Pour ajouter une nouvelle structure , cliquez sur le bouton d'ajout "Ajouter un navire" en haut à gauche. Cela vous redirigera vers une page ou vous remplirerez le formulaire d'ajout et cliquerez sur le bouton "Enregistrer"
 
 ![Ajout d'un navire](https://path/to/screenshot2.png)
 
 
-### Rechercher un navire
-Pour rechercher un navire , entrez dans le formulaire de recherche le nom ou le code OMI du navire. Cliquez ensuite sur le bouton de recherche. 
-La liste des navires trouvés s'affichera dans le tableau.
+### Rechercher une structure
+Pour rechercher une structure , entrez dans le formulaire de recherche le nom ou l'adresse de la structure. Cliquez ensuite sur le bouton de recherche. 
+La liste des structures trouvées s'affichera dans le tableau.
 
-![recherche d'un navire](https://path/to/screenshot2.png)
+![recherche d'une structure](https://path/to/screenshot2.png)
 
 
